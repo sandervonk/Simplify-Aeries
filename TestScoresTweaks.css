@@ -1,0 +1,55 @@
+#ctl00_MainContent_InfoBox,
+#ctl00_MainContent_ParentInstructions {
+    border-radius: 25px !important;
+}
+.InfoBox:before {
+    margin-top: -5px;
+    margin-left: 3px;
+}
+#divTestInfo0,
+#divTestScores .SectionHeader,
+.k-button {
+    border-radius: 25px !important;
+    border-width: medium !important;
+    border-color: #CCCCCC !important;
+}
+#TopHalf0 {
+    padding: 0px !important;
+    background-color: white !important;
+    border-radius: 25px !important;
+}
+#divTestScores .SectionHeader {
+    border-radius: 22px !important;
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+}
+.page-head {
+    border-radius: 25px !important;
+    border-width: medium !important;
+    border-color: #CCCCCC !important;
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+}
+label {
+    text-align: center;
+}
+.CatHeader.widget-head,
+#sub-stu-top-all {
+    border-radius: 25px !important;
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+}
+#sub-stu-top-all {
+    border-style: solid !important;
+    /*border-top-style: none !important;*/
+    border-color: #cccccc !important;
+}
+.page-head {
+    margin-top: 20px !important;
+    border-style: solid;
+    border-bottom-style: none;
+}
+#ctl00_MainContent_subPageHead_lblPageTitle,
+.ellipsis.normalmode {
+  padding-left: 20px !important;
+}

@@ -1,0 +1,32 @@
+{
+  "manifest_version": 2,
+ 
+  "name": "Simplify Aeries",
+  "version": "0.5.5",
+  "description": "Simple customizable QOL CSS changes to Aeries.net Student SIS sites",
+  "author": "Sander Vonk",
+  "options_page": "options.html",
+  "permissions": [
+    "storage",
+    "tabs",
+    "http://*/",
+    "https://*/"
+  ],
+  "icons": { 
+    "16": "3DLogo.png",
+    "32": "3DLogo.png",
+    "48": "3DLogo.png",
+   "128": "3DLogo.png",
+   "256": "3DLogo.png",
+   "512": "3DLogo.png"
+  },
+  "browser_action": {
+    "default_popup": "optionsUI.html"
+  },
+  "content_scripts": [{
+    "css": ["dashboardTweaks.css", "topmenu.css", "sidebarTweaks.css", "loginTweaks.css", "timeoutTweaks.css"],
+    "js": ["applyoptions.js", "redoIPmessage.js", "enablePreview.js"],
+    "matches": ["https://*.aeries.net/*"]
+  }]
+ 
+}

@@ -1,0 +1,117 @@
+#StudentNameDropDown {
+    border-top-right-radius: 25px !important;
+    border-bottom-right-radius: 25px !important;
+    border-right-width: thick !important;
+    border-radius: 0px;
+    border-color: #CCCCCC !important;
+  }
+  #StudentNameDropDown:hover {
+    background-color: #EEEEEE;
+  }
+  #StudentNameDropDownMenu {
+    border-radius: 25px !important;
+    border-top-left-radius: 0px !important;
+    border-width: medium;
+    border-color: #CCCCCC;
+  }
+  .dropdown-menu.SubTab.forceRight.show {
+    border-radius: 25px !important;
+    border-width: medium !important;
+    border-style: solid !important;
+    border-color: #CCCCCC !important;
+  }
+  .dropdown-menu.SubTab.forceRight.show {
+    padding: 0 !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    text-align: center;
+  }
+  .zebra:hover,
+  .zebra >*,
+  .zebra >*:hover {
+    background-color: lightblue !important;
+  }
+  #aLogOut,
+  #aPreview,
+  #aParentNotification,
+  #aChangePWD,
+  #aAddSTU {
+    background-color: transparent !important;
+  }
+
+  .ContextMenuItem:hover {
+    background-color: transparent !important;
+  }
+  .SubTab a:hover, 
+  a.topdynamicmenuTablet:hover, 
+  a.topdynamicmenu:hover, 
+  a.visitedtopmenu, 
+  a.subdynamicmenu:hover, 
+  a.visitedsubmenu {
+    background-color: transparent !important;
+    background: transparent !important;
+    color: #202020 !important;
+    text-decoration: none !important;
+  }
+  #nav-account-dropdown {
+    padding: 0px !important;
+  }
+  #nav-settings {
+    border-left-style: solid;
+    border-radius: 25px;
+    border-width: thick;
+    border-color: #CCCCCC;
+  }
+/*Top Menu Bar and dropdown changes*/
+  #AeriesFullPageSearchInput,
+  #SearchResults {
+    border-radius: 25px !important;
+    padding-left: 15px !important;
+    border-width: medium !important;
+    border-style: solid !important;
+    border-color: #CCCCCC !important;
+  }
+  #AeriesFullPageSearchInput:hover,
+  #AeriesFullPageSearchInput:active {
+    background-color: #aaaaaa !important;
+  }
+  .result {
+    border-style : solid;
+    margin: 0;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    border-width: medium;
+    border-top-width: 0px;
+  }
+  .results > .result:last-child,
+  .results > .result:first-child {
+    border-radius: 25px;
+  }
+  .results > .result:last-child {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    margin-bottom: 15px !important;
+  }
+  .results > .result:first-child {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-top-width: medium;
+  }
+  #AeriesFullPageTopBar {
+    display: none !important;
+  }
+
+  #AeriesFullPageContent > div.Max1600.FullWidthAutoHeight > div:nth-child(1) > div {
+    padding-top: 30px;
+  }
+
+  /*changes to the bell icon dropdown*/
+  #AeriesAlertDetails {
+    border-radius: 25px !important;
+    border-style: solid;
+    border-color: #CCCCCC;
+    margin-top: 20px; 
+  }
+  .al.rolledup {
+    display: none;
+  }
