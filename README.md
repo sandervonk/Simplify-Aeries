@@ -23,7 +23,7 @@ To-do:
   - Grades
     - ~~_Graduation Status_~~
     - ~~_Transcripts_~~
-    - Gradebook [hidden :(]
+    - ~~_Gradebook_~~
     - ...
   - Classes
     - ~~_Classes_~~
@@ -41,7 +41,7 @@ To-do:
     - Dashboard Background
       - Background Color
       - Background Image
-  - ## Need
+  ## Need
 - Small Features
   _ Make IP address actually show well when different from last login (atm just hides when current and last are same)
   _ Make dropdowns either show or not show faded background, pick one for all (atm the notifications are the outlier with a bg)
