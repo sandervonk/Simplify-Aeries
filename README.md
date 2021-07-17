@@ -56,7 +56,7 @@ To-do:
 #### Changes:
 
 - Reduced permissions load, now uses `https://*.aeries.net/*` template instead of requiring `*://*`
-  0.9.1
+  ### v0.9.1
   #### Changes:
   - Various Bug Fixes
   ### v0.9.0
