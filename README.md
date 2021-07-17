@@ -43,9 +43,9 @@ To-do:
       - Background Image
   ## Need
 - Small Features
-  _ Make IP address actually show well when different from last login (atm just hides when current and last are same)
-  _ Make dropdowns either show or not show faded background, pick one for all (atm the notifications are the outlier with a bg)
-  Fixes:
+  - _Make IP address actually show well when different from last login (atm just hides when current and last are same)_
+  - _Make dropdowns either show or not show faded background, pick one for all (atm the notifications are the outlier with a bg)_
+    Fixes:
 - Remove transition on sub-menu enter/exit
 - Make Nav buttons not take up entire height when `float on scroll` is off
 
