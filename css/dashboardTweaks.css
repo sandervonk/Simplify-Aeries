@@ -1,0 +1,664 @@
+#AeriesFullPageContent {
+  position: relative !important;
+  flex: 1 !important;
+  padding: 0 30px 80px !important;
+  margin: 0 !important;
+  height: max-content !important;
+  background-color: grey;
+  background-position: center center !important;
+  background-attachment: fixed !important;
+  background-size: cover !important;
+}
+
+/*WIDGITS*/
+
+.widget-wrapper:not(#sub-stu-top-all, #sub-livingtree-campaigns) .widget-body {
+  background-color: transparent !important;
+}
+.grid .item {
+  box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0) !important;
+  background: transparent !important;
+}
+
+.grid .item .widget-body {
+  background-color: transparent !important;
+}
+
+.grid .item-content {
+  border-width: 3px !important;
+  border-style: solid !important;
+  margin-top: 20px !important;
+  font-size: 15px !important;
+  padding: 0px !important;
+  border-radius: 25px !important;
+  background: #eceef2 !important;
+}
+
+.grid .item .widget-head {
+  border-width: 3px !important;
+  border-style: hidden !important;
+  border-radius: 25px 25px 0px 0px !important;
+  border-radius: 25px 25px 25px 25px !important;
+}
+
+.k-button,
+html.Grades #ctl00_MainContent_subGRD_btnPrint {
+  border-radius: 25px !important;
+  border-width: medium !important;
+  border-color: #cccccc !important;
+  min-width: fit-content !important;
+  text-align: center;
+  border-style: solid !important;
+}
+.btn,
+.btn-xs,
+.btn-circle {
+  border-radius: 25px !important;
+}
+/*Dashboard Tweaks*/
+#AeriesFullPageFooter,
+.footer {
+  display: none !important;
+}
+#ctl00_MainContent_ctl08_rptCalendarDay_ctl00_trFooterNoRecords {
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  border-bottom-width: 0;
+}
+#iWelcomeAndTips {
+  display: none !important;
+}
+.custom-text {
+  display: none;
+}
+#iPortalResources {
+  display: none !important;
+}
+#ctl00_AeriesFullPageParent > div.k-overlay {
+  background-color: lightblue !important;
+  opacity: 0.9 !important;
+}
+#AeriesFullPageBody,
+#ctl00_AeriesFullPageParent {
+  height: 100% !important;
+}
+.k-webkit.k-webkit91,
+#AeriesFullPageContent {
+  height: max-content !important;
+  min-height: 100% !important;
+}
+
+.blur,
+.blur:before {
+  background-color: lightblue !important;
+  opacity: 0.6 !important;
+}
+#NoAlerts {
+  text-align: center;
+  font-size: medium;
+  vertical-align: middle;
+  line-height: 400%;
+}
+a.CurrentPage {
+  background-color: transparent !important;
+}
+/*add bar at top to replace colored red white blue/for no bleed
+#AeriesFullPageTop {
+  border-color: lightblue;
+  border-bottom-width: medium;
+  border-bottom-style: solid;
+}
+  */
+/*header on subpapes*/
+#sub-stu-top-all > .CatHeader.widget-head,
+#ctl00_MainContent_subTST_tableControls .Data,
+#divRecentTestResults > .widget-body,
+#ctl00_MainContent_subPWA_divLinkedAccounts > .widget-body,
+#sub-stu-top-all {
+  border-radius: 25px !important;
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+}
+div.a-row
+  > div.a-col-8
+  #ctl00_MainContent_subPWA_divLinkedAccounts
+  > div.widget-body {
+  background-color: white !important;
+}
+#sub-stu-top-all {
+  border-style: solid !important;
+  /*border-top-style: none !important;*/
+  border-color: #cccccc !important;
+}
+.page-head {
+  margin-top: 20px !important;
+  border-style: solid;
+  border-bottom-style: none;
+}
+.page-head {
+  border-radius: 25px !important;
+  border-width: medium !important;
+  border-color: #cccccc !important;
+  border-bottom-left-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+}
+#aspnetForm {
+  height: 100% !important;
+  min-height: fit-content !important;
+}
+#ctl00_MainContent_subPageHead_lblPageTitle,
+.ellipsis.normalmode {
+  padding-left: 20px !important;
+}
+.widget-head.CatHeader,
+.CatHeader.ac,
+#ctl00_MainContent_subAttSummary_rptStudentAttSummary_ctl01_trSchoolName
+  > td
+  > div {
+  border-radius: 25px !important;
+  border-bottom-left-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+}
+
+#ctl00_MainContent_subPWA_dlLinkedAccounts > tbody > tr {
+  background-color: transparent !important;
+}
+td.vat .box-header {
+  border-radius: 25px !important;
+}
+/*From here on out... tweaks to the Student info -> profile page*/
+html.studentInfo .a-col-8 {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  float: none;
+  max-width: 1000px !important;
+}
+html.studentInfo #tableClassSummary {
+  background: white !important;
+  border-top-right-radius: 25px !important;
+  border-top-left-radius: 25px !important;
+}
+html.studentInfo #ctl00_MainContent_subAttSummary_tblEverything {
+  max-width: 1000px !important;
+}
+html.studentInfo #ctl00_MainContent_divStudentProfile .a-col-12 {
+  padding: 0px !important;
+  max-width: 1000px !important;
+}
+
+html.studentInfo
+  #ctl00_MainContent_subHSG_tblEverything
+  .Data.FullWidthAutoHeight {
+  margin: 0px;
+  width: 100% !important;
+  border-radius: 25px !important;
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+  max-width: none !important;
+}
+html.studentInfo
+  .attendance
+  #ctl00_MainContent_subAttSummary_upStudentAttSummary
+  > div.widget-body {
+  padding: 0px !important;
+  border-radius: 29px !important;
+  background-color: white !important;
+  border-color: #cccccc !important;
+  border-style: none !important;
+}
+html.studentInfo
+  #ctl00_MainContent_subAttSummary_upStudentAttSummary
+  .topbox-container
+  > div {
+  border-radius: 25px !important;
+  margin-top: 1.33% !important;
+  margin-bottom: 1.33% !important;
+}
+html.studentInfo
+  #ctl00_MainContent_subAttSummary_upStudentAttSummary
+  .topbox-container
+  > div
+  .box-header {
+  border-radius: 25px !important;
+  border-bottom-left-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+}
+html.studentInfo .topbox-container div {
+  border-width: medium !important;
+}
+html.studentInfo .topbox-container:first-child,
+html.studentInfo .topbox-container:last-child {
+  margin-right: 1.33% !important;
+  margin-left: 1.33% !important;
+}
+html.studentInfo .attendance .box-stats {
+  border-radius: 25px !important;
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+}
+html.studentInfo #ctl00_MainContent_subPWA_dlLinkedAccounts {
+  margin: 20px !important;
+  width: -webkit-fill-available !important;
+}
+/*From here on out... tweaks to the Student info -> demographics page*/
+html.studentInfo #ctl00_MainContent_subSTU_DataDetails_Panel {
+  border-radius: 25px !important;
+  background: white !important;
+  padding: 20px !important;
+}
+html.studentInfo #footer-btns.SectionFooter,
+html.studentInfo
+  #ctl00_MainContent_subSTU_DataDetails_StudentData1_TabContainer_body {
+  background: white !important;
+  border: none !important;
+}
+html.studentInfo
+  #ctl00_MainContent_subSTU_DataDetails_StudentData1_TabContainer_StudentData1_TabPanel_tab
+  .ajax__tab_tab,
+html.studentInfo
+  #ctl00_MainContent_subSTU_DataDetails_StudentData1_TabContainer_StudentData2_TabPanel_tab
+  .ajax__tab_tab {
+  border-radius: 25px !important;
+  border-bottom-left-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+}
+html.studentInfo
+  #ctl00_MainContent_subSTU_DataDetails_StudentData1_TabContainer_StudentData1_TabPanel_tab
+  .ajax__tab_tab {
+  margin-left: 10px !important;
+}
+html.studentInfo
+  #ctl00_MainContent_subSTU_DataDetails_StudentData1_TabContainer_header {
+  border-color: transparent !important;
+}
+/*From here on out... tweaks to the Student info -> contacts page*/
+html.studentInfo #ctl00_MainContent_SubStuTopAllHeader,
+html.studentInfo #ctl00_MainContent_subStuTopEmail_divStuData {
+  background: transparent !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+html.studentInfo #ContactsHeader .CatHeader {
+  border-radius: 25px !important;
+}
+html.studentInfo .FullWidthAutoHeight .DataContainer.clearfix.sortable {
+  background: white !important;
+  border-radius: 25px !important;
+  padding: 40px !important;
+  padding-left: 0px !important;
+}
+html.studentInfo #ContactsHeader .CatHeader {
+  position: absolute !important;
+  width: 20% !important;
+  text-align: center !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+}
+html.studentInfo
+  #ctl00_MainContent_subCON_New_gridSummary_UpdatePanel
+  > .FullWidthAutoHeight:last-of-type {
+  top: 40% !important;
+}
+html.studentInfo
+  #ctl00_MainContent_subCON_New_gridSummary_UpdatePanel
+  > .FullWidthAutoHeight:first-of-type {
+  top: 17% !important;
+}
+html.studentInfo
+  #ctl00_MainContent_subCON_New_gridSummary_UpdatePanel
+  > .FullWidthAutoHeight {
+  position: absolute !important;
+  left: 50% !important;
+  position: absolute !important;
+  transform: translateX(-50%);
+}
+html.studentInfo .DataContainer.clearfix.sortable {
+  max-width: 900px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+/*From here on out... tweaks to the Student info -> fees and fines page*/
+html.studentInfo #ctl00_MainContent_subFEE_DataDetails_Panel {
+  width: fit-content !important;
+  padding: 20px !important;
+  background: white !important;
+  border-radius: 25px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  position: absolute !important;
+}
+/*for all... header info pages round*/
+#ctl00_MainContent_SubStuTopAll_DataDetails_contact > * {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+#sub-stu-top-all .widget-body .tab-content {
+  border-style: solid !important;
+  border-radius: 25px !important;
+  margin-top: 10px !important;
+  border-color: #cccccc !important;
+  background-color: white !important;
+}
+
+/*-----------*/
+#sub-stu-top-all .widget-body,
+.list-unstyled.list-info.col-sm-4.col-xs-12 {
+  background-color: transparent !important;
+}
+/*for attendance*/
+html.Attendance .BackDrop.FullWidthAutoHeight.EnableTableAndFields {
+  margin: none !important;
+  width: 100% !important;
+}
+html.Attendance #AeriesFullPageContent > div:nth-child(3) > table {
+  background: white !important;
+  border-radius: 25px !important;
+  margin-top: -9px !important;
+  padding-top: 25px !important;
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+}
+html.Attendance
+  #AeriesFullPageContent
+  > .DisplaySection:nth-of-type(2)
+  > table
+  > tbody
+  > tr
+  > td:first-child {
+  max-width: 1000px !important;
+}
+
+html.Attendance .CatHeader {
+  border-radius: 25px !important;
+  border-width: medium !important;
+  border-color: #cccccc !important;
+  border-bottom-left-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+}
+html.Attendance #AeriesFullPageContent > div:nth-child(3) > table,
+html.Attendance #AeriesFullPageContent > div:nth-child(3) > div,
+html.Attendance #ctl00_MainContent_subStuTopAttSchool_divStuData {
+  max-width: 1000px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+html.Attendance
+  #AeriesFullPageContent
+  > div:nth-child(3)
+  > table
+  > tbody
+  > tr:nth-child(1)
+  > td {
+  width: 90% !important;
+  max-width: 1000px !important;
+}
+html.Attendance #ctl00_MainContent_subStuTopAttSchool_divStuData {
+  border-radius: 25px !important;
+  text-align: center !important;
+}
+/*for grades -> gradutation status page*/
+html.Grades #ctl00_MainContent_subHSG_tblEverything > tbody > tr > td > div {
+  border-radius: 25px !important;
+}
+html.Grades #ctl00_MainContent_subStuTop_divStuData {
+  border-radius: 25px !important;
+  width: 90% !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+  text-align: center !important;
+  max-width: 1200px !important;
+}
+html.Grades #ctl00_MainContent_subGBS_tblEverything {
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+/*for grades -> transcripts page*/
+html.Grades .Data#indicatorsLegend {
+  background: transparent !important;
+}
+html.Grades #ctl00_MainContent_subHIS_Histories_UpdatePanel {
+  background: white !important;
+  width: 100% !important;
+  padding: 0px !important;
+  border-radius: 25px !important;
+}
+html.Grades #ctl00_MainContent_subHIS_rptHistories_ctl00_tdTitle {
+  border-radius: 25px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+html.Grades
+  #ctl00_MainContent_subHIS_Histories_UpdatePanel
+  > table
+  > tbody
+  > tr
+  > td:nth-child(2),
+html.Grades
+  #ctl00_MainContent_subHIS_Histories_UpdatePanel
+  > table
+  > tbody
+  > tr
+  > td:nth-child(3) {
+  display: none !important;
+}
+html.Grades .BackDrop > #ctl00_MainContent_subHIS_tblEverything {
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+html.Grades
+  #ctl00_MainContent_subHIS_GPA_UpdatePanel
+  .SectionHeader.FullWidthAutoHeight {
+  width: 100% !important;
+}
+html.Grades #ctl00_MainContent_subHIS_GPA_UpdatePanel {
+  border-radius: 25px !important;
+  padding-top: 25px !important;
+  background: white !important;
+  padding-bottom: 25px !important;
+}
+/*for grades -> standards based*/
+#standardsbasedprogressfilters,
+#ctl00_MainContent_subGBS_DataDetails_ctl01_lblSchool {
+  border-radius: 25px !important;
+  border-bottom-right-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
+  text-align: center !important;
+}
+#StandardsBasedProgressContent {
+  max-width: 600px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  border: solid !important;
+  border-radius: 27px !important;
+  border-color: #cccccc !important;
+}
+#standardsbasedprogress {
+  border-radius: 25px !important;
+  border-top-right-radius: 0px !important;
+  border-top-left-radius: 0px !important;
+  text-align: center !important;
+}
+/*for grades -> grades page*/
+html.Grades #ctl00_MainContent_subGRD_lblStatus {
+  border-radius: 25px !important;
+}
+html.Grades #ctl00_MainContent_subGRD_lblStatus:before {
+  top: 20px !important;
+  left: 20px !important;
+}
+html.Grades
+  #ctl00_MainContent_subGRD_tblEverything
+  > tbody
+  > tr
+  > td
+  > div.Max1200.FullWidth
+  > div {
+  border-radius: 25px !important;
+  text-align: center !important;
+  max-width: 400px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+html.Grades
+  #ctl00_MainContent_subGRD_tblEverything
+  > tbody
+  > tr
+  > td
+  > div.Max1200.FullWidth {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+html.Grades
+  #ctl00_MainContent_subGRD_tblEverything
+  > tbody
+  > tr
+  > td
+  > div.Max1200.FullWidth
+  > table:nth-child(3) {
+  border-radius: 25px !important;
+  background: white !important;
+}
+html.Grades
+  #ctl00_MainContent_subGRD_tblEverything
+  > tbody
+  > tr
+  > td
+  > div.Max1200.FullWidth
+  > table:nth-child(3)
+  > tbody
+  > tr
+  > td
+  * {
+  background-color: white !important;
+}
+html.Grades #ctl00_MainContent_subGRD_btnPrint.icon-button-print.mainprint {
+  margin-bottom: 20px !important;
+}
+html.Grades #ctl00_MainContent_subGRD_lblStatus.AlertBox {
+  left: 16%;
+  width: 600px;
+}
+
+/*for grades -> gradebooksummary page*/
+html.Grades .tinymode.FullWidth.CardView.forceShow .Card.CardWithPeriod {
+  left: 45% !important;
+  position: relative !important;
+  transform: translateX(-50%) !important;
+  max-width: 500px !important;
+}
+html.Grades #ctl00_MainContent_subGBS_DataDetails_ctl01_trPriorTermHeading {
+  border-style: none !important;
+}
+html.Grades
+  #ctl00_MainContent_subGBS_divBackDrop
+  #ctl00_MainContent_subGBS_tblEverything {
+  max-width: 900px !important;
+}
+html.Grades #ctl00_MainContent_subGBS_tblEverything {
+  border-radius: 27px !important;
+  background: #fefefe !important;
+}
+html.Grades #ctl00_MainContent_subGBS_upPrint {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: fit-content !important;
+  text-align: center !important;
+}
+html.Grades
+  #ctl00_MainContent_subGBS_DataDetails_ctl01_lblSchool
+  > div
+  > select {
+  border-top-right-radius: 15px !important;
+  margin-right: -2px !important;
+}
+/*for classes -> Classes tab*/
+html.Classes #divViewClass {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 10px !important;
+  background: white !important;
+  border-radius: 25px !important;
+}
+html.Classes #divOperation {
+  border-radius: 25px !important;
+  border-bottom-left-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+}
+html.Classes #gridCourses .Data.normalmode {
+  display: none !important;
+}
+html.Grades
+  #AeriesFullPageContent
+  .BackDrop
+  #ctl00_MainContent_subGBS_tblEverything {
+  max-width: 900px !important;
+}
+html.Grades #ctl00_MainContent_subGBS_upEverything > div > div.CatHeader {
+  border-bottom-right-radius: 25px !important;
+  border-bottom-left-radius: 25px !important;
+}
+html.Grades #ctl00_MainContent_subGBS_dlGN {
+  border-bottom-left-radius: 15px !important;
+}
+html.Grades
+  .Max1200.FullWidthAutoHeight
+  #ctl00_MainContent_subGBS_assignmentsView
+  > table:nth-child(4) {
+  width: 100% !important;
+}
+html.Grades #ctl00_MainContent_subGBS_assignmentsView > div {
+  margin-bottom: 20px !important;
+}
+/*FOR GRADES SUBSECTION ON DASH, next also for gradebookdetails*/
+.Card.CardWithPeriod,
+#ctl00_MainContent_subGBS_assignmentsView
+  .tinymode.FullWidth.CardView.forceShow
+  .Card {
+  border-radius: 25px !important;
+  box-shadow: none !important;
+  border-width: medium !important;
+}
+
+.VisitWebsite a.k-button.WebsiteLink,
+.JoinMeeting a.k-button.OnlineMeetingLink {
+  line-height: 19px !important;
+}
+.ClassLastUpdated {
+  right: 10px !important;
+  bottom: 5px !important;
+}
+#iClasses > div {
+  max-width: 460px !important;
+}
+/*FOR CLASS SUMMARY ON DASH*/
+.a-obj > table#tableClassSummary {
+  width: 100% !important;
+}
+#tableClassSummary > tbody > tr.widget-body > td,
+#ctl00_MainContent_ctl10_rptCalendarDay_ctl00_trFooterNoRecords > td {
+  background: transparent !important;
+  border-color: transparent !important;
+}
+/*center and size all tables:*/
+#ctl00_MainContent_subHSG_tblEverything {
+  max-width: 900px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+/*tweaks for the graph/trends popup on grades*/
+#chartWindow {
+  border-radius: 0px 0px 25px 25px !important;
+  border-style: solid;
+  border-top-style: none;
+  border-color: #cccccc;
+  padding-right: 0px !important;
+}
+#ctl00_AeriesFullPageParent
+  > div:nth-child(20)
+  > div.k-window-titlebar.k-header {
+  width: 100% !important;
+}
+/*fixes for re-expanded classes body*/

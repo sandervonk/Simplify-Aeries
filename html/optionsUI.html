@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html style="width: 380px; min-width: fit-content; background-color: #c2cad0">
+  <style>
+    /*for tutcallout*/
+    #backButton {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      height: 30px;
+      opacity: 0.8;
+      border-color: #008b8b;
+      border-style: solid;
+      border-radius: 10px;
+    }
+    .tutorialCalloutPrevious {
+      border-top-right-radius: 0px;
+      position: absolute;
+      z-index: 10002;
+      background: #eeeeee;
+      padding: 5px;
+      border-radius: 0px 25px;
+      border: solid #cccccc;
+      margin-top: 90px;
+      user-select: none;
+      cursor: pointer;
+    }
+    .pointer,
+    #backButton,
+    .button {
+      cursor: pointer;
+    }
+    .tutorialCalloutHighlight {
+      border-top-right-radius: 0px;
+      display: unset;
+      width: 42px;
+      height: 42px;
+      background: white;
+      position: absolute;
+      z-index: 10002 !important;
+      border-radius: 15px 15px 0px 0px;
+      border-style: solid;
+      border-color: #cccccc;
+      border-style: solid solid none solid;
+    }
+    .overOverlay {
+      z-index: 10003 !important;
+    }
+    .tutorialCallout {
+      background: white;
+      z-index: 10001;
+      position: absolute;
+      width: 170px;
+      height: 100px;
+      border-radius: 25px;
+      border-color: #cccccc;
+      border-style: solid;
+      text-align: justify;
+      padding: 10px;
+      font-size: 10pt;
+      user-select: none;
+    }
+    /*for schedule*/
+    a {
+      color: teal !important;
+    }
+    .top-rounded2 {
+      border-radius: 25px;
+      margin: 0px;
+      padding: 0px;
+      border-top-width: 0px;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      border-style: solid;
+      background-color: #4a86e8ff;
+      height: 35px;
+      position: absolute;
+      top: 0px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 220px;
+      text-align: center;
+      font-family: "Montserrat-Alternatives" sans-serif;
+      font-size: 16pt;
+      line-height: 30px;
+      color: white;
+      border-color: black;
+      user-select: none;
+    }
+    .gradeSection2 {
+      background: white;
+      border: solid;
+      position: absolute;
+      border-color: black;
+      text-align: center;
+      height: 30px;
+      line-height: 30px;
+      font-size: 14pt;
+    }
+    .classLeft2 {
+      border-radius: 25px;
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
+      left: 30px;
+      width: 50px;
+      color: grey;
+      font-weight: bold;
+      font-size: 18pt;
+    }
+    .classMiddleLeft {
+      width: 105px;
+      left: 83px;
+      padding-left: 0px;
+      font-size: 10pt;
+      text-align: center;
+      word-wrap: break-word;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .classMiddleRight {
+      width: 83px;
+      left: 188px;
+      padding-left: 0px;
+      font-size: 10pt;
+      text-align: center;
+    }
+    .classRight2 {
+      border-radius: 25px;
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px;
+      right: 30px;
+      width: 70px;
+      color: lightgrey;
+    }
+    .elementGroup2 {
+      width: 380px;
+      height: 50px;
+      margin: 0px;
+      margin-top: 20px;
+      left: 0px;
+      padding: 0;
+    }
+
+    /*end for schedule*/
+    .top-rounded {
+      border-radius: 25px;
+      margin: 0px;
+      padding: 0px;
+      border-top-width: 0px;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      border-style: solid;
+      background-color: #4a86e8ff;
+      height: 35px;
+      position: absolute;
+      top: 0px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 280px;
+      text-align: center;
+      font-family: "Montserrat-Alternatives" sans-serif;
+      line-height: 30px;
+      color: white;
+      border-color: black;
+      font-weight: bold;
+      font-size: 20px;
+      user-select: none;
+    }
+    .gradeSection {
+      background: white;
+      border: solid;
+      position: absolute;
+      border-color: black;
+      text-align: center;
+      height: 40px;
+      line-height: 40px;
+      font-size: 14pt;
+    }
+    .classLeft {
+      border-radius: 25px;
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
+      left: 30px;
+      width: 50px;
+      color: grey;
+      font-weight: bold;
+      font-size: 18pt;
+    }
+    .classMiddle {
+      width: 188px;
+      left: 83px;
+      padding-left: 30px;
+      text-align: left;
+    }
+    .classRight {
+      border-radius: 25px;
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px;
+      right: 30px;
+      width: 70px;
+      color: lightgrey;
+    }
+    .elementGroup {
+      width: 380px;
+      height: 50px;
+      margin: 0px;
+      margin-top: 10px;
+      left: 0px;
+      padding: 0;
+    }
+
+    #refreshButton {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+    }
+    .colorPreview,
+    .sidebar-color {
+      /*FOR POPUP SIZING*/
+      height: 31.5px !important;
+    }
+    #sidebar {
+      height: 37px !important;
+    }
+    .bundled-settings {
+      background-color: white;
+      border-radius: 25px;
+      border-color: black;
+      border-width: medium;
+      border-style: solid;
+      padding: 5px;
+    }
+    .preview {
+      border-radius: 0px;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+    }
+    .section-header {
+      font-size: 15px;
+      font-weight: bold;
+      font-family: "Montserrat", sans-serif;
+      position: fixed initial;
+      padding-left: 40px;
+      margin-bottom: 0px !important;
+      margin-top: 0 !important;
+    }
+    .sidebarSettings {
+      margin-left: 25%;
+      border-style: solid;
+      border-width: medium;
+      border-color: black;
+      height: 30px;
+    }
+    .sidebarSettings:hover,
+    .sidebarSettings:active {
+      background-color: lightgrey;
+    }
+    .sidebar {
+      background: white;
+    }
+
+    .sidebar-color {
+      position: absolute;
+      margin-top: 0px;
+      border-radius: 20px;
+      border-style: solid;
+      width: 30px;
+      text-align: center;
+      /*height: 33.5px;*/
+      line-height: 30px;
+      border-color: black;
+      color: white;
+      text-shadow: 0px 0px 2px black;
+    }
+    #leftSidebar {
+      margin-left: 0 !important;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    #sidebar1 {
+      position: absolute;
+      margin-left: 30px !important;
+      border-radius: 20px;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      width: 70px;
+      text-align: center;
+      height: 30px;
+    }
+    #rightSidebar {
+      margin-left: 305px !important;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    #sidebar2 {
+      position: absolute;
+      margin-left: 230px !important;
+      border-radius: 20px;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      width: 70px;
+      text-align: center;
+      height: 30px;
+    }
+    .colorInput {
+      margin-left: 32.5px;
+      border-style: solid;
+      border-width: medium;
+      border-color: black;
+      height: 30px;
+      width: 100px;
+      border-radius: 0;
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+      text-align: center;
+    }
+    .colorInput:hover {
+      background-color: lightgrey;
+    }
+    .colorPreview {
+      position: absolute;
+      margin-top: 0px;
+      border-radius: 20px;
+      border-style: solid;
+      width: 30px;
+      text-align: center;
+      height: 33.5px;
+      line-height: 30px;
+      border-color: black;
+      /*color: white;
+      text-shadow: 0px 0px 2px black;*/
+      color: transparent;
+    }
+    #loginColorPreview {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    #save {
+      background-color: rgb(0, 154, 214);
+      color: white;
+      padding: 5px;
+      position: fixed;
+      right: 5%;
+      bottom: 5%;
+      text-align: center;
+      border-radius: 20px;
+      width: 20%;
+      height: 10%;
+      border-width: thick;
+      border-color: darkcyan !important;
+      font-weight: bolder;
+    }
+    #save:hover {
+      background-color: rgb(16, 118, 158);
+    }
+    #status {
+      text-align: right;
+      position: fixed;
+      right: 5%;
+      bottom: 0%;
+      font-weight: bolder;
+      color: black;
+      text-shadow: 0px 0px 4px white;
+      border-radius: 20px;
+      padding-left: 10px;
+      padding-right: 10px;
+      border-style: solid;
+    }
+    #bgPreview {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    #logOptions {
+      display: block !important;
+    }
+    #loginEmailCheck {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  </style>
+
+  <head>
+    <title>Simplify Aeries Options [UI/POPUP]</title>
+  </head>
+  <body>
+    <img
+      src="../icon/3DLogo.png"
+      class="pointer"
+      id="logo"
+      style="
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        height: 30px;
+        opacity: 0.8;
+        border-color: darkcyan;
+        border-style: solid;
+        border-radius: 10px;
+      "
+    />
+    <img
+      src="../icon/icon_grades.png"
+      class="pointer"
+      id="gradesButton"
+      style="
+        position: absolute;
+        top: 5px;
+        right: 85px;
+        height: 30px;
+        opacity: 0.8;
+        border-color: darkcyan;
+        border-style: solid;
+        border-radius: 10px;
+      "
+    />
+    <img
+      src="../icon/icon_calendar.png"
+      class="pointer"
+      id="scheduleButton"
+      style="
+        position: absolute;
+        top: 5px;
+        right: 125px;
+        height: 30px;
+        opacity: 0.8;
+        border-color: darkcyan;
+        border-style: solid;
+        border-radius: 10px;
+      "
+    />
+    <p
+      class="pointer"
+      style="
+        position: absolute;
+        top: 5px;
+        right: 45px;
+        height: 30px;
+        opacity: 0.8;
+        border-color: darkcyan;
+        border-style: solid;
+        border-radius: 10px;
+        background-color: white;
+        font-weight: bolder;
+        font-size: 20pt;
+        width: 30px;
+        text-align: center;
+        line-height: 26px;
+        margin: 0px;
+      "
+      id="refreshButton"
+    >
+      &#x21BB;
+    </p>
+    <label>
+      <input
+        type="checkbox"
+        id="toggleExtention"
+        style="text-align: center; margin-left: 0%"
+      />
+      Use Customizations? v0.0.0
+    </label>
+    <p class="section-header">Login Page Settings</p>
+    <div class="bundled-settings">
+      <label>
+        <input type="checkbox" id="district" style="margin-left: 15%" />
+        Hide District Name on Login Page?
+      </label>
+      <div
+        class="bundled-settings"
+        id="logOptions"
+        style="
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+          border-color: transparent;
+        "
+      >
+        <p
+          id="loginColorPreview"
+          class="colorPreview"
+          style="background: grey"
+        ></p>
+        <input
+          id="loginColor"
+          class="colorInput"
+          placeholder="Login Color"
+          type="”text”"
+        />
+      </div>
+      <label>
+        <input type="checkbox" id="autoLog" style="margin-left: 15%" />
+        Automatically Log In? (Google/OAuth)
+      </label>
+      <div
+        class="bundled-settings"
+        id="logOptions"
+        style="
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+          border-color: transparent;
+        "
+      >
+        <p
+          id="loginEmailCheck"
+          class="colorPreview"
+          style="background: grey"
+        ></p>
+        <input
+          id="loginEmail"
+          class="colorInput"
+          placeholder="Your Email (Optional and Stored on YOUR device)"
+          style="
+            width: 83% !important;
+            font-size: 12px;
+            text-align: left;
+            padding-left: 5%;
+          "
+          type="”text”"
+        />
+      </div>
+    </div>
+    <p class="section-header">Sidebar Options:</p>
+    <div class="bundled-settings sidebar" id="sidebar-group">
+      <div class="bundled-settings sidebar" id="sidebar">
+        <p id="leftSidebar" class="sidebar-color">1</p>
+        <input
+          id="sidebar1"
+          class="sidebarSettings"
+          placeholder="First Sidebar Color"
+          type="”text”"
+        />
+        <p id="rightSidebar" class="sidebar-color">2</p>
+        <input
+          id="sidebar2"
+          class="sidebarSettings"
+          placeholder="Second Sidebar Color"
+          type="”text”"
+        />
+      </div>
+      <div class="bundled-settings" id="sidebar-nav" style="margin-top: 5px">
+        <label>
+          <input
+            type="checkbox"
+            id="navFloat"
+            style="text-align: center; margin-left: 15%"
+          />
+          Make Nav Buttons Float on Scroll?
+        </label>
+      </div>
+    </div>
+    <p class="section-header">Background:</p>
+    <div class="bundled-settings" style="padding-bottom: 2px">
+      <p id="bgPreview" class="colorPreview" style="background: grey">1</p>
+      <input
+        id="solidColor"
+        class="colorInput"
+        placeholder="green, #d8d8d8, etc."
+        type="”text”"
+      />
+
+      <br />
+
+      <label>
+        <input type="checkbox" id="useURL" style="margin-left: 15%" />
+        Use Background Image? (URL)
+      </label>
+
+      <br />
+
+      <input
+        id="imgLink"
+        placeholder="Your Image URL"
+        type="”link”"
+        style="width: 97.8%"
+      />
+      <br />
+      <img
+        id="imgPreview"
+        class="preview"
+        src="http://via.placeholder.com/350x150"
+        style="
+          padding: 0px;
+          margin: 0px;
+          width: 100%;
+          height: 142px;
+          text-align: center;
+        "
+      />
+    </div>
+    <div
+      id="status"
+      style="border-color: transparent; background-color: transparent"
+    ></div>
+    <button id="save">Save</button>
+  </body>
+  <script src="../js/options.js"></script>
+  <script src="../js/seticon.js"></script>
+</html>

@@ -1,32 +1,44 @@
 {
   "manifest_version": 2,
- 
+
   "name": "Simplify Aeries",
-  "version": "0.5.5",
+  "version": "0.9.2",
   "description": "Simple customizable QOL CSS changes to Aeries.net Student SIS sites",
   "author": "Sander Vonk",
-  "options_page": "options.html",
-  "permissions": [
-    "storage",
-    "tabs",
-    "http://*/",
-    "https://*/"
-  ],
-  "icons": { 
-    "16": "3DLogo.png",
-    "32": "3DLogo.png",
-    "48": "3DLogo.png",
-   "128": "3DLogo.png",
-   "256": "3DLogo.png",
-   "512": "3DLogo.png"
+  "options_page": "html/options.html",
+  "permissions": ["storage", "tabs", "https://*.aeries.net/*", "https://*.aeries.com/*"],
+  "icons": {
+    "16": "icon/3DLogo.png",
+    "32": "icon/3DLogo.png",
+    "48": "icon/3DLogo.png",
+    "128": "icon/3DLogo.png",
+    "256": "icon/3DLogo.png",
+    "512": "icon/3DLogo.png"
+  },
+  "background": {
+    "scripts": ["js/background.js"],
+    "persistent": false
   },
   "browser_action": {
-    "default_popup": "optionsUI.html"
+    "default_popup": "html/optionsUI.html"
   },
-  "content_scripts": [{
-    "css": ["dashboardTweaks.css", "topmenu.css", "sidebarTweaks.css", "loginTweaks.css", "timeoutTweaks.css"],
-    "js": ["applyoptions.js", "redoIPmessage.js", "enablePreview.js"],
-    "matches": ["https://*.aeries.net/*"]
-  }]
- 
+  "content_scripts": [
+    {
+      "css": [
+        "css/dashboardTweaks.css",
+        "css/topmenu.css",
+        "css/sidebarTweaks.css",
+        "css/loginTweaks.css",
+        "css/timeoutTweaks.css",
+        "css/testScoresTweaks.css"
+      ],
+      "js": [
+        "js/applyoptions.js",
+        "js/redoIPmessage.js",
+        "js/enablePreview.js",
+        "js/getClassInfo.js"
+      ],
+      "matches": ["https://*.aeries.net/*"]
+    }
+  ]
 }

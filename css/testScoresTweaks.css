@@ -1,0 +1,40 @@
+html.testPage #ctl00_MainContent_InfoBox,
+#ctl00_MainContent_ParentInstructions {
+    border-radius: 25px !important;
+}
+html.testPage .InfoBox:before {
+    margin-top: -5px;
+    margin-left: 3px;
+}
+html.testPage #divTestInfo0,
+html.testPage #divTestScores .SectionHeader,
+html.testPage #TopHalf0 {
+    padding: 0px !important;
+    background-color: white !important;
+    border-radius: 25px !important;
+}
+html.testPage #divTestScores .SectionHeader {
+    border-radius: 22px !important;
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+}
+
+html.testPage label {
+    text-align: center;
+}
+
+html.testPage #StudentTestDetails {
+    border-radius: 25px !important;
+}
+html.testPage .TestDetails-header-title title {
+    margin-left: 20px !important;
+}
+html.testPage #ctl00_MainContent_subTST_tblEverything .CatHeader {
+    border-radius: 25px !important;
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+}
+html.testPage #ctl00_MainContent_subTST_tblEverything {
+    margin-right: auto !important;
+    margin-left: auto !important;
+}

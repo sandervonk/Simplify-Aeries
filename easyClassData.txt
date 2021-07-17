@@ -1,0 +1,10 @@
+on dash:
+
+Class name:
+document.getElementsByClassName("Card CardWithPeriod")[i].children[2].textContent
+Period Number:
+document.getElementsByClassName("Card CardWithPeriod")[i].children[0].textContent
+Grade:
+document.getElementsByClassName("Card CardWithPeriod")[i].children[1].children[1].textContent.replace(/\s+/g, '').substring(0, document.getElementsByClassName("Card CardWithPeriod")[i].children[1].children[1].textContent.replace(/\s+/g, '').indexOf('('));
+Grade Percentage:
+document.getElementsByClassName("Card CardWithPeriod")[i].children[1].children[1].children[0].textContent

@@ -1,0 +1,99 @@
+
+  /*Combat with the 'time out' popup*/
+  #ctl00_AeriesFullPageParent > div:nth-child(20) > div.k-window-titlebar.k-header {
+    border-radius: 25px !important;
+    border-style: solid !important;
+    border-width: medium !important;
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    /*width: 230px !important;*/
+  }
+  #ctl00_AeriesFullPageParent > div:nth-child(19) {
+    visibility: hidden;
+  }
+  #ctl00_AeriesFullPageParent > div > div.k-window-titlebar.k-header {
+    display: block !important;
+    border-radius: 0px !important;
+    border-style: solid !important;
+    border-width: medium !important;
+    border-top-left-radius: 25px !important;
+    border-top-right-radius: 25px !important;
+  }
+  #ctl00_AeriesFullPageParent > div.k-widget.k-window {
+    background: transparent !important;
+    border-color: transparent !important;
+    box-shadow: 0 0 0 transparent !important;
+  }
+
+  #divTimeOutWarning > #btnLogout,
+  #divTimeOutWarning > #btnKeepAlive,
+  #divTimeOutWarning > #btnReturnToLogin {
+    border-radius: 25px !important;
+    border-style: solid !important;
+    border-color: lightgrey !important;
+    border-width: medium !important;
+  }
+  #divTimeOutWarning > #btnLogout:hover,
+  #divTimeOutWarning > #btnKeepAlive:hover,
+  #divTimeOutWarning > #btnReturnToLogin:hover {
+    border-color: black !important;
+  }
+  #ctl00_AeriesFullPageParent > div:nth-child(19) > div.k-window-titlebar.k-header {
+    width: 234.5px !important;
+  }
+  #divTimeOutWarning_wnd_title {
+    text-align: center !important;
+  }
+
+  #divTimeOutWarning_wnd_title {
+    border-radius: 25px !important;
+  }
+  .k-window-content.k-content#divTimeOutWarning,
+  .k-window-titlebar.k-header:has(#divTimeOutWarning_wnd_title) {
+    border-radius: 25px !important;
+  }
+  #ctl00_AeriesFullPageParent > div:nth-child(20) {
+    display: none;
+  }
+
+  #ctl00_AeriesFullPageParent > div:nth-child(22) > div.k-window-titlebar.k-header {
+    border-radius: 25px !important;
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+  }
+
+  /*ATTEMPT 2*/
+  #ctl00_AeriesFullPageParent > div > div.k-window-titlebar.k-header {
+    display: block !important;
+    border-radius: 0px !important;
+    border-style: solid !important;
+    border-width: medium !important;
+    border-top-left-radius: 25px !important;
+    border-top-right-radius: 25px !important;
+    background: #EEEEEE !important;
+    width: 294px !important;
+  }
+  #divTimeOutWarning.k-window-content.k-content {
+    background: white !important;
+    border-color: #CCCCCC !important;
+    box-shadow: 0 0 0 transparent !important;
+    border-radius: 0px !important;
+    border-style: solid !important;
+    border-width: medium !important;
+    border-bottom-left-radius: 25px !important;
+    border-bottom-right-radius: 25px !important;
+    width: 300px !important;
+    border-top-style: none !important;
+  }
+  .k-widget.k-window {
+    border-radius: 25px !important;
+  }
+  .k-widget.k-window:has(#divTimeOutWarning) {
+    width: 100 !important;
+  }
+  .k-widget.k-window:last-child,
+  .timeoutWrapper {
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+  }

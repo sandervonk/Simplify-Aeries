@@ -1,0 +1,23 @@
+last class period:
+
+parseInt(document.querySelector(`#gridCourses > tbody > tr:last-of-type`).children[1].textContent.replace(/[Pd\s]/g, ''))
+
+
+Room num for nth Period :
+
+document.querySelector(`#gridCourses > tbody > tr:nth-child(${period+2})`).children[6].textContent.replace("Room ", "").replace(" ", "")
+
+
+Course Name:
+
+document.querySelector(`#gridCourses > tbody > tr:nth-child(${period+2})`).children[4].textContent.split("-")[1].replace(/[\s]/g, "")
+
+
+Teacher Name:
+
+document.querySelector(`#gridCourses > tbody > tr:nth-child(${1+2})`).children[4].textContent.split("-")[1].replace(/[\s]/g, "")
+
+
+teacherEmail:
+
+document.querySelector(`#gridCourses > tbody > tr:nth-child(${1+2})`).children[9].children[2].href

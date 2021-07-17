@@ -1,0 +1,98 @@
+#AeriesFullPageNav {
+    flex: 0 0 250px !important;
+    background: #0C1E41 !important;
+    background: radial-gradient(circle 58.5rem at 50% 5rem, #2e8eab, #113e75) !important;
+    min-height: 900px !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 250px !important;
+    overflow-x: hidden !important;
+    position: initial !important;
+  }
+  
+  #AeriesFullPageNavItems {
+    position:fixed !important;
+    width: 210px !important;
+    margin: 20px !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    left: 0 !important;
+    border-radius: 25px !important;
+    border-style: solid !important;
+    border-color: white !important;
+  }
+  
+  .AeriesFullPageParentNavMainLink:not(#TOP_6){
+    border-color: white !important;
+    border-style: solid !important;
+    border-width: 0px !important;
+    border-bottom-width: medium !important;
+  }
+
+  #TOP_1 {
+    padding-top: 10px !important;
+    border-style: hidden !important;
+    border-radius: 25px 25px 0px 0px !important;
+  }
+  #ctl00_AeriesFullPageParentNav_AeriesFullPageParentNav >*:last-of-type {
+    padding-bottom: 10px !important;
+    border-style: hidden !important;
+    border-radius: 0px 0px 25px 25px !important;
+  }
+  .AeriesFullPageParentNavSubLink {
+    left: -23px !important;
+    visibility: visible !important;
+  }
+  .AeriesFullPageNavItemsShowSubMenu {
+    visibility: hidden;
+  }
+  .AeriesFullPageNavItems,
+  #AeriesFullPageNavItems,
+  .AeriesFullPageParentNav,
+  #AeriesFullPageNav >*,
+  #AeriesFullPageNav {
+    transition: none !important;
+  }
+  #AeriesFullPageNavItems,
+  .AeriesFullPageParentNav,
+  .AeriesFullPageParentNavMainLink,
+  .NavBack,
+  .AeriesFullPageParentNavMainLink:hover a:before,
+  .NavBack:hover a:before,
+  .AeriesFullPageParentNavMainLink:hover a:after,
+  .NavBack:hover a:after {
+    transition: none !important;
+  }
+  .AeriesFullPageParentNavSubLink {
+    border-radius: 25px !important;
+    margin: 20px !important;
+    width: 210px !important;
+    height: fit-content !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  .AeriesFullPageParentNavSubLinkMenu > a {
+    width: -webkit-fill-available !important;
+    margin: 0px !important;
+    border-radius: 0px !important;
+    border-bottom-style: solid;
+    text-align: center;
+  }
+  .AeriesFullPageParentNavSubLinkMenu > a:hover {
+    background: #5a7198 !important; 
+  }
+  .AeriesFullPageParentNavSubLinkMenu > a:first-child {
+    text-align: left !important;
+    margin-top: 0px !important;
+  }
+  .AeriesFullPageParentNavSubLinkMenu > a:last-child {
+    border-radius: 25px;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+    border-bottom-style: none;
+  }
+  .AeriesFullPageParentNavSubLink {
+    border-color: white;
+    border-style: solid;
+  }

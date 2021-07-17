@@ -1,0 +1,147 @@
+<html style="background-color: #c2cad0">
+  <head>
+    <style>
+      .container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 0;
+        margin: 0;
+        width: 370px;
+        text-align: justify;
+      }
+      h1 {
+        display: inline;
+      }
+      .center-container {
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+        width: 370px;
+      }
+
+      .bundled-settings {
+        background-color: white;
+        border-radius: 25px;
+        border-color: black;
+        border-width: medium;
+        border-style: solid;
+        padding: 15px;
+      }
+
+      .section-header {
+        font-size: 15px;
+        font-weight: bold;
+        font-family: "Montserrat", sans-serif;
+        position: fixed initial;
+        padding-left: 40px;
+        margin-bottom: 0px !important;
+        margin-top: 0 !important;
+      }
+
+      a {
+        color: teal !important;
+      }
+    </style>
+
+    <title>Simplify Aeries Options</title>
+  </head>
+
+  <body
+    style="
+      font-family: montserrat, sans-serif !important;
+      width: 380px !important;
+    "
+  >
+    <div class="container">
+      <div
+        class="center-container"
+        style="margin-top: 20px; margin-bottom: 10px"
+      >
+        <img
+          src="../icon/3DLogo.png"
+          style="height: 40px; margin-left: 5%; vertical-align: 70%"
+        />
+        <h1
+          style="
+            vertical-align: 60%;
+            font-family: 'Montserrat Alternates', sans-serif !important;
+            padding-left: 20px !important;
+          "
+        >
+          Simplify Aeries
+        </h1>
+      </div>
+      <p class="section-header">What It Is</p>
+      <div class="bundled-settings">
+        Simplify Aeries is a Chrome Extension made to inprove the interactive
+        and viewing experience of Aeries.net Student SIS sites, it does so
+        through the use of CSS and JS content scripts. Feel free to take a look
+        in the extension's folder to learn how it works (on the code side, for
+        how YOU use it, see the below)!
+      </div>
+      <p class="section-header">How To Use It</p>
+      <div class="bundled-settings">
+        The extension has several main tabs, all of which (aside from the
+        main/settings page) are described in the tutorial that opens when you
+        first open the extension popup. To do this, find the icon on your top
+        tray, note that there might be a puzzle icon which needs to be clicked
+        before you 'pin' the Simplify Aeries widget in some browsers. From
+        there, you'll want to tweak the settings to fit your liking before
+        clicking 'Save'. To access the 'Quick Check Grades' and 'Class Schedule'
+        tabs, you must first have visited your school/district's Aeries page
+        with the extension installed. It will automatically set itself up from
+        there. Note that this link should looks something like
+        yourschool.asp.aeries.net/student/* .
+      </div>
+      <p class="section-header">Other</p>
+      <div class="bundled-settings">
+        If you have any problems getting the extension to work, or don't
+        understand how to use some features, click the logo in the top right of
+        the popup, which will both open a short feedback Google Form and make it
+        so that the tutorial will re-run next time you open the popup. I hope
+        you like it, and please use the form if you have any problems!
+      </div>
+
+      <p class="section-header">Versioning info</p>
+      <div class="bundled-settings" id="versioningInfo">
+        This is version [0.0.0] of the Simplify Aeries Extension, made for
+        Google Chrome and Microsoft Chromium Edge browsers. The extension is
+        currently compatible with Aeries SIS version [9.21.6.22].
+      </div>
+      <script src="../js/Info.js"></script>
+    </div>
+
+    <div
+      class="container"
+      style="left: 20% !important; width: fit-content; position: fixed"
+    >
+      <img
+        src="../imgForBack/Quick Check Grades.png"
+        style="
+          border-style: solid;
+          height: auto;
+          width: 250px;
+          border-radius: 25px !important;
+          display: none;
+        "
+      />
+    </div>
+    <div
+      class="container"
+      style="left: 80% !important; width: fit-content; position: fixed"
+    >
+      <img
+        src="../imgForBack/Class Schedule.png"
+        style="
+          border-style: solid;
+          height: auto;
+          width: 250px;
+          border-radius: 25px !important;
+          display: none;
+        "
+      />
+    </div>
+  </body>
+</html>
