@@ -51,7 +51,7 @@ To-do:
 
 # Versions
 
-### v0.9.2 `Current`
+### `v0.9.2 Current`
 
 #### Changes:
 
