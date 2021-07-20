@@ -1,3 +1,11 @@
+# Installation
+ - Download the latest .zip from [releases](https://github.com/sandervonk/simplify-aeries/releases) and unzip it into the current folder (there's a folder inside the zip so you dont want to have a nested structure)
+ - Navigate to _edge://extentions_ or _chrome://extentions_ depending on your browser
+ - Next, find the switch labeled _**`Developer mode`**_ and make sure it is on
+ - Click _**`Load Unpacked`**_ and select the folder named 'Simplify Aeries' that the .zip extracted into
+ - Finally, just press 'Select Folder' or the equivalent button for opening the folder in your browser
+ - Simplify Aeries should now be installed!! Try visiting an _*.aeries.net_ site and it should work!
+ - If you have any problems, please contact me, oh and to customize settings and access the 'quick-check' features, click the extention's icon in your extentions tray
 # Info
 
 ### _Made by me, yay!_
