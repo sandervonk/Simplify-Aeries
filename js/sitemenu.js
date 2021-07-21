@@ -1,0 +1,1 @@
+document.getElementById("nav-account-dropdown").innerHTML += `<li class="zebra"><a id="aSimplifyAeries" css="ContextMenuItem" href="/Simplify-Aeries">Simplify Aeries</a></li>`

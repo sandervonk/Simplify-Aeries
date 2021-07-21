@@ -7,3 +7,6 @@ function install_notice() {
     chrome.tabs.create({ url: "html/Info.html" });
 }
 install_notice();
+function reloadExtension() {
+    chrome.runtime.reload()
+}

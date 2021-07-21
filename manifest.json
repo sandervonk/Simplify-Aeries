@@ -6,7 +6,12 @@
   "description": "Simple customizable QOL CSS changes to Aeries.net Student SIS sites",
   "author": "Sander Vonk",
   "options_page": "html/options.html",
-  "permissions": ["storage", "tabs", "https://*.aeries.net/*", "https://*.aeries.com/*"],
+  "permissions": [
+    "storage",
+    "tabs",
+    "https://*.aeries.net/*",
+    "https://*.aeries.com/*"
+  ],
   "icons": {
     "16": "icon/3DLogo.png",
     "32": "icon/3DLogo.png",
@@ -33,6 +38,7 @@
         "css/testScoresTweaks.css"
       ],
       "js": [
+        "js/sitemenu.js",
         "js/applyoptions.js",
         "js/redoIPmessage.js",
         "js/enablePreview.js",
