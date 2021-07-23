@@ -29,17 +29,14 @@
 .zebra:hover,
 .zebra > *,
 .zebra > *:hover {
-  background-color: lightcyan !important;
+  background-color: rgb(224, 244, 255) !important;
 }
-#aLogOut,
-#aPreview,
-#aParentNotification,
-#aChangePWD,
-#aAddSTU,
-#aSimplifyAeries {
+.dropdown-submenu.nav-buttons ul li.zebra a {
   background-color: transparent !important;
 }
-
+.dropdown-submenu.nav-buttons ul li.zebra {
+  cursor: pointer;
+}
 .ContextMenuItem:hover {
   background-color: transparent !important;
 }
@@ -118,4 +115,86 @@ a.visitedsubmenu {
 }
 .al.rolledup {
   display: none;
+}
+div#simplifyMenu > div {
+  position: fixed;
+  min-width: 400px;
+  min-height: 300px;
+  width: 30%;
+  background: rgb(236, 238, 242);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-left: 125px;
+  z-index: 999999999 !important;
+  border-radius: 25px;
+  border: #41526e solid medium;
+  height: fit-content;
+}
+div#simplifyMenu {
+  z-index: 99999998 !important;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  background: rgba(128, 128, 128, 0.5);
+}
+.simplify-title {
+  font-size: 20px;
+  text-align: left;
+  background: #ffffff !important;
+  border-radius: 25px;
+  height: 45px;
+  line-height: 45px;
+  font-family: "aeries_sanssemibold";
+  color: #41526e;
+  padding: 0px 20px;
+}
+.simplify-title:hover {
+  box-shadow: 0px 3px 3px rgb(0 0 0 / 10%) !important;
+}
+#simplify-body {
+  transition: height 0.25s ease-in-out, min-height 0.25s ease-in-out;
+}
+#simplify-body.collapsed {
+  min-height: 0px !important;
+  height: min-content !important;
+}
+#simplify-body.collapsed #simplify-parent {
+  display: none;
+}
+.section,
+.section-lower {
+  margin: 0px 20px;
+}
+
+#simplify-body .section {
+  border-bottom: solid thin grey;
+  text-transform: uppercase;
+  /*font-style: italic;*/
+  margin: 0px 20x;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  height: unset !important;
+  min-height: unset !important;
+  font-size: 12pt;
+  line-height: 12pt;
+  margin-top: 25px;
+  padding-bottom: 5px;
+  color: #444;
+}
+#simplify-body .section:first-of-type {
+  margin-top: 0px !important;
+}
+.section-lower {
+  padding: 20px;
+  background: white;
+  border-radius: 0px 0px 10px 10px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 11pt;
+}
+
+#simplify-parent {
+  padding: 20px 0px;
 }
