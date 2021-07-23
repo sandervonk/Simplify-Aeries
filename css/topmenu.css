@@ -198,3 +198,8 @@ div#simplifyMenu {
 #simplify-parent {
   padding: 20px 0px;
 }
+.lower-part {
+  padding: 10px;
+  margin: 10px;
+  background-origin: solid grey;
+}

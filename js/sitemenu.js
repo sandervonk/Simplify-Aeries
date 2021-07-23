@@ -1,9 +1,9 @@
-testing = true
-if (testing) { menuDis = "unset" } else { menuDis = "none" }
+//testing = true
+//if (testing === true) { menuDis = "unset" } else { menuDis = "none" }
 if (window.location.href.includes("aeries.net/student")) {
     document.head.innerHTML += `<style>@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');</style>`
     document.body.innerHTML += `
-    <div id="simplifyMenu" style='display: ${menuDis};'>
+    <div id="simplifyMenu" style='display: none;'>
         <div id='simplify-body'>
             <div class="simplify-title">
                 Simplify Aeries Settings
@@ -13,11 +13,15 @@ if (window.location.href.includes("aeries.net/student")) {
             </div>
             <div id='simplify-parent'>
                 <div class='section'>Login</div>
-                <div class='section-lower'></div>
+                <div class='section-lower'>
+                    <div class="lower-part"></div>
+                </div>
                 <div class='section'>Dashboard</div>
                 <div class='section-lower'></div>
                 <div class='section'>Features</div>
-                <div class='section-lower'></div>
+                <div class='section-lower'>
+                    <div class="lower-part"></div>
+                </div>
             </div>
         </div>
     </div>`
@@ -26,6 +30,7 @@ if (window.location.href.includes("aeries.net/student")) {
     document.getElementsByClassName("icon-expanded widget-collapse")[document.getElementsByClassName("icon-expanded widget-collapse").length - 1].addEventListener("click", function () {
         if (document.getElementById('simplify-body').className.includes('collapsed')) { document.getElementById('simplify-body').className = 'expanded' } else { document.getElementById('simplify-body').className = 'collapsed' }
     });
+    console.log("hello from submenu.js")
 }
 
 console.log(window.location.href.substring(window.location.href.length - 26))
