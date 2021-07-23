@@ -1,23 +1,46 @@
 
-
+testing = true
+if (testing) { menudisplay = "unset" } else { menudisplay = "none" }
 if (window.location.href.includes("aeries.net/student")) {
     document.head.innerHTML += `<style>@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');</style>`
     document.body.innerHTML += `
-    <div id="simplifyMenu" style='display: none;'>
+    <div id="simplifyMenu" style='display: ${menudisplay};'>
         <div id='simplify-body'>
             <div class="simplify-title">
                 Simplify Aeries Settings
                 <div class="widget-options pull-right">
-                    <span class="icon-expanded widget-collapse"></span>
+                    <span class="icon-expanded widget-collapse" title="Click to collapse"></span>
                 </div>
             </div>
             <div id='simplify-parent'>
                 <div class='section'>Login</div>
-                <div class='section-lower'></div>
+                <div class='section-lower'>
+                    <div class='lower-part'>
+                        <div class='divider checkbox'><input type="checkbox"></div>
+                        <div class='divider'>Hide District Name on Login Page?</div>
+                    </div>
+                    <div class='lower-part'>
+                        <div class='divider checkbox'><input type="checkbox"></div>
+                        <div class='divider'>Automatically Login In? (Google/OAuth)</div>
+                    </div>
+                </div>
                 <div class='section'>Dashboard</div>
-                <div class='section-lower'></div>
+                <div class='section-lower'>
+                    <div class='lower-part'>
+                        <div class='divider'>Thing1</div>
+                        <div class='divider'>Thing2</div>
+                    </div>
+                    <div class='lower-part'>
+                        <div class='divider checkbox'><input type="checkbox"></div>
+                        <div class='divider'>Use Background Image? (URL)</div>
+                    </div>
+                </div>
                 <div class='section'>Features</div>
-                <div class='section-lower'></div>
+                <div class='section-lower'>
+                    <div class='lower-part'>
+                        <div class='divider'></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>`

@@ -184,11 +184,12 @@ div#simplifyMenu {
   padding-bottom: 5px;
   color: #444;
 }
-#simplify-body .section:first-of-type {
+#simplify-body .section:first-of-type,
+.lower-part:first-of-type {
   margin-top: 0px !important;
 }
 .section-lower {
-  padding: 20px;
+  padding: 10px;
   background: white;
   border-radius: 0px 0px 10px 10px;
   font-family: "Montserrat", sans-serif;
@@ -197,4 +198,76 @@ div#simplifyMenu {
 
 #simplify-parent {
   padding: 20px 0px;
+}
+.lower-part {
+  padding: 0px;
+  margin: 5px;
+  border: solid lightgrey;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+.lower-part .divider {
+  border-right: solid lightgrey;
+  display: inline-block;
+  padding: 5px;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow-x: hidden;
+}
+.lower-part:last-of-type {
+  margin-bottom: 0px !important;
+}
+.lower-part {
+  margin-bottom: 10px !important;
+}
+.lower-part .divider:last-of-type {
+  border-right: none;
+}
+/* one item */
+.lower-part .divider:first-child:nth-last-child(1) {
+  /* -or- li:only-child { */
+  width: 100%;
+}
+
+/* two items */
+.lower-part .divider:first-child:nth-last-child(2),
+.lower-part .divider:first-child:nth-last-child(2) ~ .divider {
+  width: 50%;
+}
+
+/* three items */
+.lower-part .divider:first-child:nth-last-child(3),
+.lower-part .divider:first-child:nth-last-child(3) ~ .divider {
+  width: 33.3333%;
+}
+
+/* four items */
+.lower-part .divider:first-child:nth-last-child(4),
+.lower-part .divider:first-child:nth-last-child(4) ~ .divider {
+  width: 25%;
+}
+.lower-part .divider.checkbox,
+.lower-part .divider.checkbox input {
+  border-radius: 0px 5px 5px 0px !important;
+  background: #eee;
+  line-height: 10px !important;
+  padding: 10px !important;
+  width: fit-content !important;
+  height: fit-content !important;
+}
+.lower-part .divider.checkbox input {
+  height: 10px !important;
+  width: 10px !important;
+  transform: scale(2);
+  transform-origin: center center;
+  cursor: pointer;
+}
+.lower-part .divider.checkbox ~ .divider {
+  width: 275px !important;
+}
+.lower-part {
+  height: 40px !important;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
 }
