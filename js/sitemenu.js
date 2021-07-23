@@ -3,7 +3,7 @@
 if (window.location.href.includes("aeries.net/student")) {
     document.head.innerHTML += `<style>@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');</style>`
     document.body.innerHTML += `
-    <div id="simplifyMenu" style='display: unset;'>
+    <div id="simplifyMenu" style='display: none;'>
         <div id='simplify-body'>
             <div class="simplify-title">
                 Simplify Aeries Settings
