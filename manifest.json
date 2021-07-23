@@ -38,7 +38,6 @@
         "css/testScoresTweaks.css"
       ],
       "js": [
-        "js/sitemenu.js",
         "js/applyoptions.js",
         "js/redoIPmessage.js",
         "js/enablePreview.js",
