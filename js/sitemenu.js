@@ -151,6 +151,7 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
                     document.querySelector("#AeriesTextLogo").style = `background: ${color2} !important;`
                     localStorage["Simplify-Sidebar"] = `background: radial-gradient(58.5rem at 50% 5rem, ${color1}, ${color2})!important;`
                     //add to storage
+                    resetTimer()
                 });
                 document.getElementById("sidebar2").addEventListener('input', function () {
                     color1 = document.getElementById("sidebar1").children[0].value
@@ -160,14 +161,27 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
                     document.querySelector("#AeriesTextLogo").style = `background: ${color2} !important;`
                     localStorage["Simplify-Sidebar"] = `background: radial-gradient(58.5rem at 50% 5rem, ${color1}, ${color2})!important;`
                     //add to storage
+                    resetTimer()
                 });
-
-
+                var timeoutID;
+                function startTimer() {
+                    // wait 2 seconds before calling goInactive
+                    timeoutID = window.setTimeout(closePreview, 1000);
+                }
+                function resetTimer(e) {
+                    window.clearTimeout(timeoutID);
+                }
+                function closePreview() {
+                    document.getElementById("simplifyMenu").className = document.getElementById("simplifyMenu").className.replace(" sidebar-edit", "")
+                    tog1 = true
+                    tog2 = true
+                }
                 tog1 = true
                 tog2 = true
                 document.getElementById("sidebar1").children[0].addEventListener('focus', function () {
                     if (tog1 === true) {
                         document.getElementById("simplifyMenu").className += " sidebar-edit"
+                        startTimer()
                     } else {
                         document.getElementById("simplifyMenu").className = document.getElementById("simplifyMenu").className.replace(" sidebar-edit", "")
                     }
@@ -177,6 +191,7 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
                     if (tog1 === true) {
                         tog2 = false;
                         document.getElementById("simplifyMenu").className += " sidebar-edit"
+                        startTimer()
                     } else {
                         document.getElementById("simplifyMenu").className = document.getElementById("simplifyMenu").className.replace(" sidebar-edit", "")
                     }
@@ -184,6 +199,7 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
                 document.getElementById("sidebar2").children[0].addEventListener('focus', function () {
                     if (tog2 === true) {
                         document.getElementById("simplifyMenu").className += " sidebar-edit"
+                        startTimer()
                     } else {
                         document.getElementById("simplifyMenu").className = document.getElementById("simplifyMenu").className.replace(" sidebar-edit", "")
                     }
@@ -193,6 +209,7 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
                     if (tog2 === true) {
                         tog2 = false;
                         document.getElementById("simplifyMenu").className += " sidebar-edit"
+                        startTimer()
                     } else {
                         document.getElementById("simplifyMenu").className = document.getElementById("simplifyMenu").className.replace(" sidebar-edit", "")
                     }
