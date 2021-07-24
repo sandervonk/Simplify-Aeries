@@ -453,3 +453,6 @@ div.divider {
 .bg-show .dash-bg {
   display: none !important;
 }
+.lower-part#url-parent {
+  margin-bottom: 0px !important;
+}
