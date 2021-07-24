@@ -48,7 +48,7 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
                     </div>
                     <div class='lower-part'>
                         <div class='divider color' id='dash-color'><input type="color" id="dash-color-picker" value="#ADD8E6"></div>
-                    <div class='divider'>Login Background</div>
+                    <div class='divider'>Dashboard Background</div>
                 </div>
                 </div>
                 <div class='section'>Features</div>
