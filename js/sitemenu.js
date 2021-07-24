@@ -87,13 +87,25 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
         color2 = document.getElementById("sidebar2").children[0].value
         document.getElementsByClassName("sidebar-gradient")[0].style.background = `linear-gradient(90deg, ${color1}, ${color2})`
         document.getElementById("AeriesFullPageNav").style = `background: radial-gradient(58.5rem at 50% 5rem, ${color1}, ${color2})!important;`
+        //add to storage
     });
     document.getElementById("sidebar2").addEventListener('input', function () {
         color1 = document.getElementById("sidebar1").children[0].value
         color2 = document.getElementById("sidebar2").children[0].value
         document.getElementsByClassName("sidebar-gradient")[0].style.background = `linear-gradient(90deg, ${color1}, ${color2})`
         document.getElementById("AeriesFullPageNav").style = `background: radial-gradient(58.5rem at 50% 5rem, ${color1}, ${color2})!important;`
+        //add to storage
+    });
+    document.getElementById("dash-color-picker").addEventListener('input', function () {
+        color = document.getElementById("dash-color-picker").value
+        document.getElementById("AeriesFullPageContent").style = `background: ${color} !important;`
+        //add to storage
+    });
+    document.getElementById("login-color-picker").addEventListener('input', function () {
+        color = document.getElementById("login-color-picker").value
+        //add to storage
     });
 }
+
 
 
