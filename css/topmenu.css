@@ -289,6 +289,7 @@ div#simplifyMenu {
 }
 #bg-section .lower-part.bg-image img {
   width: 100%;
+  max-height: 600px;
 }
 .bg-hide .bg-image.image,
 .bg-hide .bg-image.url {
@@ -336,4 +337,41 @@ div#simplifyMenu {
   height: 34px !important;
   width: 37px !important;
   user-select: none;
+}
+.lower-part .divider.checkbox {
+  width: 37px !important;
+  height: 35px !important;
+  margin: 0px !important;
+}
+/*fix for login screen */
+#TheBody .divider.checkbox input {
+  margin: 0px !important;
+  width: 10px !important;
+  height: 10px !important;
+  text-align: center !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) scale(2) !important;
+}
+#TheBody div#simplifyMenu > div {
+  margin-left: 0px !important;
+}
+#simplify-parent {
+  height: 50%;
+  max-height: 800px;
+  overflow-y: scroll;
+}
+#simplify-parent::-webkit-scrollbar-track {
+  opacity: 0 !important;
+  background: transparent;
+  display: none !important;
+  margin-bottom: 25px !important;
+}
+#simplify-parent::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: rgba(127, 127, 127, 0.6);
+}
+#simplify-parent::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
 }
