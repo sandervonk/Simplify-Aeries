@@ -9,6 +9,7 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
     //load from cache
     setTimeout(function () {
         document.getElementById('aSimplifyAeries').addEventListener("click", function () {
+            document.querySelector("#nav-account-dropdown").className = document.querySelector("#nav-account-dropdown").className.replace(" show", "")
             document.body.innerHTML += `
             <div id="simplifyMenu" style='display: unset;'>
                 <div id='simplify-body'>
@@ -67,6 +68,9 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
             </div>`
             console.log(`showing menu`)
             setTimeout(function () {
+                document.getElementById("simplifyMenu").className = "blurred"
+            }, 100)
+            setTimeout(function () {
                 document.getElementsByClassName("widget-collapse")[document.getElementsByClassName("widget-collapse").length - 1].addEventListener("click", function () {
                     iconElement = document.getElementsByClassName("widget-collapse")[document.getElementsByClassName("widget-collapse").length - 1]
                     if (document.getElementById('simplify-body').className.includes('collapsed')) {
@@ -78,7 +82,6 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
                         iconElement.title = "Click to close"
                         iconElement.addEventListener("click", function () {
                             document.getElementById("simplifyMenu").remove()
-                            document.querySelector("#simplify-settings").remove()
                             window.location.reload()
                         })
                     }
@@ -145,6 +148,7 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
                     color2 = document.getElementById("sidebar2").children[0].value
                     document.getElementsByClassName("sidebar-gradient")[0].style.background = `linear-gradient(90deg, ${color1}, ${color2})`
                     document.getElementById("AeriesFullPageNav").style = `background: radial-gradient(58.5rem at 50% 5rem, ${color1}, ${color2})!important;`
+                    document.querySelector("#AeriesTextLogo").style = `background: ${color2} !important;`
                     localStorage["Simplify-Sidebar"] = `background: radial-gradient(58.5rem at 50% 5rem, ${color1}, ${color2})!important;`
                     //add to storage
                 });
@@ -153,9 +157,48 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
                     color2 = document.getElementById("sidebar2").children[0].value
                     document.getElementsByClassName("sidebar-gradient")[0].style.background = `linear-gradient(90deg, ${color1}, ${color2})`
                     document.getElementById("AeriesFullPageNav").style = `background: radial-gradient(58.5rem at 50% 5rem, ${color1}, ${color2})!important;`
+                    document.querySelector("#AeriesTextLogo").style = `background: ${color2} !important;`
                     localStorage["Simplify-Sidebar"] = `background: radial-gradient(58.5rem at 50% 5rem, ${color1}, ${color2})!important;`
                     //add to storage
                 });
+
+
+                tog1 = true
+                tog2 = true
+                document.getElementById("sidebar1").children[0].addEventListener('focus', function () {
+                    if (tog1 === true) {
+                        document.getElementById("simplifyMenu").className += " sidebar-edit"
+                    } else {
+                        document.getElementById("simplifyMenu").className = document.getElementById("simplifyMenu").className.replace(" sidebar-edit", "")
+                    }
+                });
+                document.getElementById("sidebar1").children[0].addEventListener('blur', function () {
+                    tog1 = !tog1;
+                    if (tog1 === true) {
+                        tog2 = false;
+                        document.getElementById("simplifyMenu").className += " sidebar-edit"
+                    } else {
+                        document.getElementById("simplifyMenu").className = document.getElementById("simplifyMenu").className.replace(" sidebar-edit", "")
+                    }
+                });
+                document.getElementById("sidebar2").children[0].addEventListener('focus', function () {
+                    if (tog2 === true) {
+                        document.getElementById("simplifyMenu").className += " sidebar-edit"
+                    } else {
+                        document.getElementById("simplifyMenu").className = document.getElementById("simplifyMenu").className.replace(" sidebar-edit", "")
+                    }
+                });
+                document.getElementById("sidebar2").children[0].addEventListener('blur', function () {
+                    tog2 = !tog2;
+                    if (tog2 === true) {
+                        tog2 = false;
+                        document.getElementById("simplifyMenu").className += " sidebar-edit"
+                    } else {
+                        document.getElementById("simplifyMenu").className = document.getElementById("simplifyMenu").className.replace(" sidebar-edit", "")
+                    }
+                });
+
+
                 document.getElementById("dash-color-picker").addEventListener('input', function () {
                     color = document.getElementById("dash-color-picker").value
                     document.getElementById("AeriesFullPageContent").style = `background: ${color} !important;`
@@ -178,6 +221,7 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
         }
         document.getElementById("AeriesFullPageContent").style = localStorage["Simplify-Background"]
         document.getElementById("AeriesFullPageNav").style = localStorage["Simplify-Sidebar"]
+        document.querySelector("#AeriesTextLogo").style = `background: ${localStorage["Simplify-Sidebar"].substring(58, 65)} !important;`
     }, 200)
 
 
@@ -298,6 +342,7 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
                     localStorage["Simplify-Sidebar"] = `background: radial-gradient(58.5rem at 50% 5rem, ${document.getElementById("sidebar1").children[0].value}, ${document.getElementById("sidebar2").children[0].value})!important;`
                     document.getElementsByClassName("sidebar-gradient")[0].style.background = `linear-gradient(90deg, ${document.getElementById("sidebar1").children[0].value}, ${document.getElementById("sidebar2").children[0].value})`
                 });
+
                 document.getElementById("sidebar2").addEventListener('input', function () {
                     localStorage["Simplify-Sidebar"] = `background: radial-gradient(58.5rem at 50% 5rem, ${document.getElementById("sidebar1").children[0].value}, ${document.getElementById("sidebar2").children[0].value})!important;`
                     document.getElementsByClassName("sidebar-gradient")[0].style.background = `linear-gradient(90deg, ${document.getElementById("sidebar1").children[0].value}, ${document.getElementById("sidebar2").children[0].value})`
