@@ -82,7 +82,15 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
         } catch { }
         document.getElementById("bg-url").value = document.getElementById('bg-url').value.split("//")[document.getElementById('bg-url').value.split("//").length - 1]
     });
+    document.getElementById("bg-box").addEventListener('change', function () {
+        element = document.getElementById("bg-box")
+        checked = element.checked
+        if (!checked) {
+            color = document.getElementById("dash-color-picker").value
+            document.getElementById("AeriesFullPageContent").style = `background: ${color} !important;`
+        }
 
+    }
     document.getElementById("sidebar1").addEventListener('input', function () {
         color1 = document.getElementById("sidebar1").children[0].value
         color2 = document.getElementById("sidebar2").children[0].value
