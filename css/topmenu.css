@@ -456,3 +456,7 @@ div.divider {
 .lower-part#url-parent {
   margin-bottom: 0px !important;
 }
+#AeriesFullPageContent {
+  background-position-x: center !important;
+  background-size: cover !important;
+}

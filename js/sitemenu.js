@@ -76,6 +76,7 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
                 e && (document.getElementById('url-parent').className = 'lower-part bg-image url good-url', console.log('good-url')), e || (document.getElementById('url-parent').className = 'lower-part bg-image url')
                 if (e) {
                     document.getElementById("bg-img-preview").src = imageUrl
+                    document.getElementById("AeriesFullPageContent").style = `background: url(${imageUrl}) !important;`
                 }
             }));
         } catch { }
