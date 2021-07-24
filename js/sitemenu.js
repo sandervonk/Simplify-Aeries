@@ -161,6 +161,7 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
                     document.querySelector("#AeriesTextLogo").style = `background: ${color2} !important;`
                     localStorage["Simplify-Sidebar"] = `background: radial-gradient(58.5rem at 50% 5rem, ${color1}, ${color2})!important;`
                     //add to storage
+                    enableDash()
                     resetTimer()
                 });
                 var timeoutID;
