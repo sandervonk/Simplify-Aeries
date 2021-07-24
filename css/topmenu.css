@@ -266,7 +266,8 @@ div#simplifyMenu {
 }
 .lower-part .divider.checkbox ~ .divider,
 .lower-part .divider.color ~ .divider {
-  width: 275px !important;
+  width: -webkit-fill-available !important;
+  margin-right: 45px !important;
 }
 .lower-part {
   height: 40px !important;
