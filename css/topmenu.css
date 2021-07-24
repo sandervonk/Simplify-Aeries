@@ -361,6 +361,7 @@ div#simplifyMenu {
   height: 50%;
   max-height: 800px;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 #simplify-parent::-webkit-scrollbar-track {
   opacity: 0 !important;
@@ -375,4 +376,8 @@ div#simplifyMenu {
 #simplify-parent::-webkit-scrollbar {
   width: 8px !important;
   height: 8px !important;
+}
+#simplify-parent::-webkit-scrollbar-corner {
+  opacity: 0;
+  background: transparent;
 }
