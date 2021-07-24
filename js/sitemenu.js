@@ -30,9 +30,10 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
                 </div>
                 <div class='section'>Dashboard</div>
                 <div class='section-lower bg-hide' id='bg-section'>
-                    <div class='lower-part'>
-                        <div class='divider'>Thing1</div>
-                        <div class='divider'>Thing2</div>
+                    <div class='lower-part sidebar-colors'>
+                        <div class='divider sidebar-color sidebar-1'>Color1</div>
+                        <div class='divider sidebar-gradient'><span>Gradient</span></div>
+                        <div class='divider sidebar-color sidebar-2'>Color2</div>
                     </div>
                     <div class='lower-part bg-show bg-image box' id='bg-part'>
                         <div class='divider checkbox'><input type='checkbox' id='bg-box' onClick="if(document.getElementById('bg-box').checked){document.getElementById('bg-section').className=document.getElementById('bg-section').className.replace('bg-hide','bg-show')}else{document.getElementById('bg-section').className=document.getElementById('bg-section').className.replace('bg-show','bg-hide')}">
