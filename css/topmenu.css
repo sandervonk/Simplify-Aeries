@@ -139,6 +139,7 @@ div#simplifyMenu {
   left: 0px;
   top: 0px;
   background: rgba(128, 128, 128, 0.5);
+  visibility: visible !important;
 }
 .simplify-title {
   font-size: 20px;
@@ -455,4 +456,12 @@ div.divider {
 }
 .lower-part#url-parent {
   margin-bottom: 0px !important;
+}
+.icon-close:before {
+  content: "✖";
+}
+.icon-close:hover {
+  text-shadow: 0 4px 3px rgb(0 0 0 / 20%);
+  font-weight: bold;
+  opacity: 1 !important;
 }
