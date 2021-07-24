@@ -31,9 +31,9 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
                 <div class='section'>Dashboard</div>
                 <div class='section-lower bg-hide' id='bg-section'>
                     <div class='lower-part sidebar-colors'>
-                        <div class='divider sidebar-color sidebar-1'>Color1</div>
+                        <div id='sidebar1' class='divider sidebar-color sidebar-1'><input value='#2e8eab' type='color'></div>
                         <div class='divider sidebar-gradient'><span>Gradient</span></div>
-                        <div class='divider sidebar-color sidebar-2'>Color2</div>
+                        <div id='sidebar2' class='divider sidebar-color sidebar-2'><input value='#113e75' type='color'></div>
                     </div>
                     <div class='lower-part bg-show bg-image box' id='bg-part'>
                         <div class='divider checkbox'><input type='checkbox' id='bg-box' onClick="if(document.getElementById('bg-box').checked){document.getElementById('bg-section').className=document.getElementById('bg-section').className.replace('bg-hide','bg-show')}else{document.getElementById('bg-section').className=document.getElementById('bg-section').className.replace('bg-show','bg-hide')}">
@@ -77,4 +77,17 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
         } catch { }
         document.getElementById("bg-url").value = document.getElementById('bg-url').value.split("//")[document.getElementById('bg-url').value.split("//").length - 1]
     });
+
+    document.getElementById("sidebar1").addEventListener('input', function () {
+        color1 = document.getElementById("sidebar1").children[0].value
+        color2 = document.getElementById("sidebar2").children[0].value
+        document.getElementsByClassName("sidebar-gradient")[0].style.background = `linear-gradient(90deg, ${color1}, ${color2})`
+    });
+    document.getElementById("sidebar2").addEventListener('input', function () {
+        color1 = document.getElementById("sidebar1").children[0].value
+        color2 = document.getElementById("sidebar2").children[0].value
+        document.getElementsByClassName("sidebar-gradient")[0].style.background = `linear-gradient(90deg, ${color1}, ${color2})`
+    });
 }
+
+
