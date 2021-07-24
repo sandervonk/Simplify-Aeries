@@ -87,10 +87,9 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
         checked = element.checked
         if (!checked) {
             color = document.getElementById("dash-color-picker").value
-            document.getElementById("AeriesFullPageContent").style = `background: ${color} !important;`
+            document.getElementById("AeriesFullPageContent").style = `background: ${color} !important;`;
         }
-
-    }
+    });
     document.getElementById("sidebar1").addEventListener('input', function () {
         color1 = document.getElementById("sidebar1").children[0].value
         color2 = document.getElementById("sidebar2").children[0].value
