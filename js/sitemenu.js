@@ -44,7 +44,11 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
                         <img src='https://via.placeholder.com/1920x1080' id='bg-img-preview'>
                     </div>
                     <div class='lower-part bg-image url' id="url-parent">
-                    <input type='url' id='bg-url' placeholder='path.to/your.img'>
+                        <input type='url' id='bg-url' placeholder='path.to/your.img'>
+                    </div>
+                    <div class='lower-part'>
+                        <div class='divider color' id='dash-color'><input type="color" id="dash-color-picker" value="#ADD8E6"></div>
+                    <div class='divider'>Login Background</div>
                 </div>
                 </div>
                 <div class='section'>Features</div>
