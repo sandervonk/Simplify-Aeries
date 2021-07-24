@@ -66,7 +66,9 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
     });
 
     //load from cache
-    document.getElementById("AeriesFullPageContent").style = localStorage["Simplify-Background"]
+    setTimeout(function () {
+        document.getElementById("AeriesFullPageContent").style = localStorage["Simplify-Background"]
+    }, 300)
 
     setTimeout(function () {
         body = document.getElementById("simplify-parent")
