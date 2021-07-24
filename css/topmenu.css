@@ -333,7 +333,8 @@ div#simplifyMenu {
   width: 247px !important;
 }
 .lower-part .divider .color,
-#login-color {
+#login-color,
+#dash-color {
   color: transparent;
   height: 34px !important;
   width: 37px !important;
