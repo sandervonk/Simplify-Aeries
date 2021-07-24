@@ -64,6 +64,10 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
     document.getElementsByClassName("icon-expanded widget-collapse")[document.getElementsByClassName("icon-expanded widget-collapse").length - 1].addEventListener("click", function () {
         if (document.getElementById('simplify-body').className.includes('collapsed')) { document.getElementById('simplify-body').className = 'expanded' } else { document.getElementById('simplify-body').className = 'collapsed' }
     });
+
+    //load from cache
+    document.getElementById("AeriesFullPageContent").style = localStorage["Simplify-Background"]
+
     setTimeout(function () {
         body = document.getElementById("simplify-parent")
         body.style["max-height"] = `${body.offsetHeight}px`
@@ -77,6 +81,7 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
                 if (e) {
                     document.getElementById("bg-img-preview").src = imageUrl
                     document.getElementById("AeriesFullPageContent").style = `background: url(${imageUrl}) !important; background-size: cover !important; background-position-x: center !important;`
+                    localStorage["Simplify-Background"] = `background: url(${imageUrl}) !important; background-size: cover !important; background-position-x: center !important;`
                 }
             }));
         } catch { }
@@ -88,6 +93,17 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
         if (!checked) {
             color = document.getElementById("dash-color-picker").value
             document.getElementById("AeriesFullPageContent").style = `background: ${color} !important;`;
+        } else {
+            function imageExists(e, r) { var t = new Image; t.onload = function () { r(!0) }, t.onerror = function () { r(!1) }, t.src = e } var imageUrl = 'https://' + document.getElementById('bg-url').value.split("//")[document.getElementById('bg-url').value.split("//").length - 1];
+            imageExists(imageUrl, (function (e) {
+                e && (document.getElementById('url-parent').className = 'lower-part bg-image url good-url', console.log('good-url')), e || (document.getElementById('url-parent').className = 'lower-part bg-image url')
+                if (e) {
+                    document.getElementById("bg-img-preview").src = imageUrl
+                    localStorage["Simplify-Background"] = `background: url(${imageUrl}) !important; background-size: cover !important; background-position-x: center !important;`
+                    document.getElementById("AeriesFullPageContent").style = `background: url(${imageUrl}) !important; background-size: cover !important; background-position-x: center !important;`
+                }
+            }));
+            document.getElementById("bg-url").value = document.getElementById('bg-url').value.split("//")[document.getElementById('bg-url').value.split("//").length - 1]
         }
     });
     document.getElementById("sidebar1").addEventListener('input', function () {
@@ -107,6 +123,7 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
     document.getElementById("dash-color-picker").addEventListener('input', function () {
         color = document.getElementById("dash-color-picker").value
         document.getElementById("AeriesFullPageContent").style = `background: ${color} !important;`
+        localStorage["Simplify-Background"] = `background: ${color} !important;`
         //add to storage
     });
     document.getElementById("login-color-picker").addEventListener('input', function () {
