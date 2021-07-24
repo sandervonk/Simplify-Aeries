@@ -248,7 +248,8 @@ div#simplifyMenu {
   width: 25%;
 }
 .lower-part .divider.checkbox,
-.lower-part .divider.checkbox input {
+.lower-part .divider.checkbox input,
+.lower-part .divider.color {
   border-radius: 0px 5px 5px 0px !important;
   background: #eee;
   line-height: 10px !important;
@@ -263,11 +264,76 @@ div#simplifyMenu {
   transform-origin: center center;
   cursor: pointer;
 }
-.lower-part .divider.checkbox ~ .divider {
+.lower-part .divider.checkbox ~ .divider,
+.lower-part .divider.color ~ .divider {
   width: 275px !important;
 }
 .lower-part {
   height: 40px !important;
   margin-left: 0px !important;
   margin-right: 0px !important;
+}
+.lower-part.bg-image.box,
+.lower-part.bg-image.image {
+  margin-bottom: 0px !important;
+}
+#bg-section.bg-show .lower-part.bg-image.box {
+  border-radius: 5px 5px 0px 0px !important;
+}
+#bg-section.bg-show .lower-part.bg-image.image {
+  border-radius: 0px !important;
+  margin-top: 0px !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  height: fit-content !important;
+}
+#bg-section .lower-part.bg-image img {
+  width: 100%;
+}
+.bg-hide .bg-image.image,
+.bg-hide .bg-image.url {
+  display: none !important;
+}
+.bg-image.url {
+  margin-top: 0px !important;
+  border-radius: 0px 0px 5px 5px !important;
+  text-align: left;
+  width: 100%;
+}
+
+.bg-image.url input {
+  border: none;
+  width: fit-content;
+  height: 100%;
+  text-align: left;
+  color: darkcyan;
+  text-decoration: underline grey;
+  background: transparent;
+}
+.bg-image.url input::placeholder {
+  text-decoration: none !important;
+}
+.bg-image.url::before {
+  content: "https://";
+  color: grey;
+  height: 100% !important;
+  margin-left: 10px;
+  padding-right: 10px;
+  border-right: solid lightgrey;
+}
+.bg-image.url {
+  background: #fdd;
+}
+.bg-image.url.good-url {
+  background: #dfd !important;
+}
+#bg-url {
+  width: 247px !important;
+}
+.lower-part .divider .color,
+#login-color {
+  color: transparent;
+  height: 34px !important;
+  width: 37px !important;
+  user-select: none;
 }
