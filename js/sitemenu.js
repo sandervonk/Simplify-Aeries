@@ -165,19 +165,57 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
                 });
                 var timeoutID;
                 function startTimer() {
-                    // wait 2 seconds before calling goInactive
-                    timeoutID = window.setTimeout(closePreview, 1000);
+                    timeoutID = window.setTimeout(closePreview, 3000);
                 }
+
                 function resetTimer(e) {
                     window.clearTimeout(timeoutID);
                 }
+
                 function closePreview() {
                     document.getElementById("simplifyMenu").className = document.getElementById("simplifyMenu").className.replace(" sidebar-edit", "")
                     tog1 = true
                     tog2 = true
                 }
+
+                //dash timer
+                var timeoutID2;
+                function startTimerDash() {
+                    timeoutID2 = window.setTimeout(disableDash, 2000);
+                }
+                function resetTimerDash(e) {
+                    window.clearTimeout(timeoutID2);
+                }
+                function enableDash() {
+                    document.getElementById("simplify-body").style = `transform: translate(-50%, -50%) translateX(${(window.innerWidth - 250) / 2}px) !important;`
+                    document.getElementById("simplifyMenu").style.width = "250px"
+                }
+                function disableDash() {
+                    togDash = true
+                    document.getElementById("simplify-body").style = ""
+                    document.getElementById("simplifyMenu").style.width = "100%"
+                }
                 tog1 = true
                 tog2 = true
+                togDash = true
+                document.getElementById("dash-color-picker").addEventListener('focus', function () {
+                    if (togDash === true) {
+                        enableDash()
+                        startTimerDash()
+                    } else {
+                        disableDash()
+                    }
+                });
+                document.getElementById("dash-color-picker").addEventListener('blur', function () {
+                    togDash = !togDash;
+                    if (togDash === true) {
+                        togDash = false;
+                        enableDash()
+                        startTimer()
+                    } else {
+                        disableDash()
+                    }
+                });
                 document.getElementById("sidebar1").children[0].addEventListener('focus', function () {
                     if (tog1 === true) {
                         document.getElementById("simplifyMenu").className += " sidebar-edit"
@@ -189,7 +227,7 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
                 document.getElementById("sidebar1").children[0].addEventListener('blur', function () {
                     tog1 = !tog1;
                     if (tog1 === true) {
-                        tog2 = false;
+                        tog1 = false;
                         document.getElementById("simplifyMenu").className += " sidebar-edit"
                         startTimer()
                     } else {
@@ -220,6 +258,7 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
                     color = document.getElementById("dash-color-picker").value
                     document.getElementById("AeriesFullPageContent").style = `background: ${color} !important;`
                     localStorage["Simplify-Background"] = `background: ${color} !important;`
+                    resetTimerDash()
                     //add to storage
                 });
                 document.getElementById("login-color-picker").addEventListener('input', function () {

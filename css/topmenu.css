@@ -485,3 +485,8 @@ input[type="color"] {
 #simplifyMenu.sidebar-edit div#simplify-body {
   margin-left: -125px !important;
 }
+#simplifyMenu.dash-edit {
+}
+#simplifyMenu.dash-edit div#simplify-body {
+  margin-left: 125px !important;
+}
