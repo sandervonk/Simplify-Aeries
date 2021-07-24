@@ -292,19 +292,20 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
     if (JSON.parse(localStorage["Simplify-Hide-District"])) { districtVis = "hidden" } else { districtVis = "visible" }
     setTimeout(function () {
         document.getElementById("district").style.visibility = districtVis
-    }, 300)
-    document.body.style = localStorage["Simplify-Login-Color"]
-    document.head.innerHTML += `
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap') 
-      </style>`
-    document.styleSheets[0].insertRule(`
+        document.styleSheets[0].insertRule(`
         @font-face {
             font-family: 'aeries_sanssemibold';
             src: url('https://mvla.asp.aeries.net/student/StyleSheets/fonts/Aeries/aeriessans-semibold-webfont.woff2') format('woff2'), url('https://mvla.asp.aeries.net/student/StyleSheets/fonts/Aeries/aeriessans-semibold-webfont.woff') format('woff');
             font-weight: normal;
             font-style: normal;
         }`)
+    }, 300)
+    document.body.style = localStorage["Simplify-Login-Color"]
+    document.head.innerHTML += `
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap') 
+      </style>`
+
     0
     setTimeout(function () {
         document.querySelector("#login-block > div.login-box.clearfix > div.language-wrapper > p").innerHTML += `<a id="simplify-settings" title="Open Simplify Aeries Settings" style="padding-left: 10px;font-size:20pt !important;line-height: 10px !important;position: absolute;top: 50%;transform: translateY(-50%);cursor: pointer;text-decoration: none !important;user-select: none;">&#9881;</a>`
