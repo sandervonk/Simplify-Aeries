@@ -161,7 +161,6 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
                     document.querySelector("#AeriesTextLogo").style = `background: ${color2} !important;`
                     localStorage["Simplify-Sidebar"] = `background: radial-gradient(58.5rem at 50% 5rem, ${color1}, ${color2})!important;`
                     //add to storage
-                    enableDash()
                     resetTimer()
                 });
                 var timeoutID;
@@ -179,44 +178,10 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
                     tog2 = true
                 }
 
-                //dash timer
-                var timeoutID2;
-                function startTimerDash() {
-                    timeoutID2 = window.setTimeout(disableDash, 2000);
-                }
-                function resetTimerDash(e) {
-                    window.clearTimeout(timeoutID2);
-                }
-                function enableDash() {
-                    document.getElementById("simplify-body").style = `transform: translate(-50%, -50%) translateX(${(window.innerWidth - 250) / 2}px) !important;`
-                    document.getElementById("simplifyMenu").style.width = "250px"
-                }
-                function disableDash() {
-                    togDash = true
-                    document.getElementById("simplify-body").style = ""
-                    document.getElementById("simplifyMenu").style.width = "100%"
-                }
+
                 tog1 = true
                 tog2 = true
-                togDash = true
-                document.getElementById("dash-color-picker").addEventListener('focus', function () {
-                    if (togDash === true) {
-                        enableDash()
-                        startTimerDash()
-                    } else {
-                        disableDash()
-                    }
-                });
-                document.getElementById("dash-color-picker").addEventListener('blur', function () {
-                    togDash = !togDash;
-                    if (togDash === true) {
-                        togDash = false;
-                        enableDash()
-                        startTimer()
-                    } else {
-                        disableDash()
-                    }
-                });
+
                 document.getElementById("sidebar1").children[0].addEventListener('focus', function () {
                     if (tog1 === true) {
                         document.getElementById("simplifyMenu").className += " sidebar-edit"
@@ -259,8 +224,6 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
                     color = document.getElementById("dash-color-picker").value
                     document.getElementById("AeriesFullPageContent").style = `background: ${color} !important;`
                     localStorage["Simplify-Background"] = `background: ${color} !important;`
-                    resetTimerDash()
-                    //add to storage
                 });
                 document.getElementById("login-color-picker").addEventListener('input', function () {
                     color = document.getElementById("login-color-picker").value
