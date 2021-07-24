@@ -32,7 +32,7 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
                 <div class='section-lower bg-hide' id='bg-section'>
                     <div class='lower-part sidebar-colors'>
                         <div id='sidebar1' class='divider sidebar-color sidebar-1'><input value='#2e8eab' type='color'></div>
-                        <div class='divider sidebar-gradient'><span>Gradient</span></div>
+                        <div class='divider sidebar-gradient'><span>Sidebar Colors</span></div>
                         <div id='sidebar2' class='divider sidebar-color sidebar-2'><input value='#113e75' type='color'></div>
                     </div>
                     <div class='lower-part bg-show bg-image box' id='bg-part'>
