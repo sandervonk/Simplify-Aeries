@@ -392,7 +392,7 @@ div.divider {
   border-right: solid lightgrey !important;
   border-left: solid lightgrey !important;
   background: linear-gradient(90deg, #2e8eab, #113e75);
-  flex-grow: 1;
+  flex-grow: 5;
   flex-basis: 33.33333%;
   font-size: 10pt !important;
 }
@@ -421,7 +421,9 @@ div.divider {
 }
 .sidebar-color {
   padding: 0px !important;
-  max-width: 100px !important;
+  /*max-width: 100px !important;*/
+  flex-basis: 37px !important;
+  flex-grow: 1;
 }
 .sidebar-color input {
   transform: scale(2);
@@ -435,7 +437,7 @@ div.divider {
   display: inline-flex;
   flex-flow: row;
 }
-.divider.color {
+.lower-part .divider.color {
   border-radius: 3px 5px 5px 3px !important;
 }
 .divider.color input[type="color"] {

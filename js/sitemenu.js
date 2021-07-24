@@ -24,7 +24,7 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
                         <div class='divider'>Automatically Login In? (Google/OAuth)</div>
                     </div>
                     <div class='lower-part'>
-                        <div class='divider color' id='login-color'></div>
+                        <div class='divider color' id='login-color'><input type="color" id="login-color-picker" value="#ADD8E6"></div>
                         <div class='divider'>Login Background</div>
                     </div>
                 </div>
@@ -82,11 +82,13 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
         color1 = document.getElementById("sidebar1").children[0].value
         color2 = document.getElementById("sidebar2").children[0].value
         document.getElementsByClassName("sidebar-gradient")[0].style.background = `linear-gradient(90deg, ${color1}, ${color2})`
+        document.getElementById("AeriesFullPageNav").style = `background: radial-gradient(58.5rem at 50% 5rem, ${color1}, ${color2})!important;`
     });
     document.getElementById("sidebar2").addEventListener('input', function () {
         color1 = document.getElementById("sidebar1").children[0].value
         color2 = document.getElementById("sidebar2").children[0].value
         document.getElementsByClassName("sidebar-gradient")[0].style.background = `linear-gradient(90deg, ${color1}, ${color2})`
+        document.getElementById("AeriesFullPageNav").style = `background: radial-gradient(58.5rem at 50% 5rem, ${color1}, ${color2})!important;`
     });
 }
 
