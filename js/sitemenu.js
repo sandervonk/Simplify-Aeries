@@ -14,9 +14,12 @@ var settingsElement = `
                     <div class='divider checkbox'><input type="checkbox" id="hide-district"></div>
                     <div class='divider'>Hide District Name on Login Page?</div>
                 </div>
-                <div class='lower-part'>
+                <div class='lower-part auto-login login-check'>
                     <div class='divider checkbox'><input type="checkbox" id="auto-login"></div>
                     <div class='divider'>Automatically Login In? (Google/OAuth)</div>
+                </div>
+                <div class='lower-part auto-login login-email'>
+                    <div class='divider'><input id="email-login" placeholder="your.email@provider.com"></div>
                 </div>
                 <div class='lower-part'>
                     <div class='divider color' id='login-color'><input type="color" id="login-color-picker" value="#ADD8E6"></div>
@@ -115,8 +118,7 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
                 } else {
                     document.getElementById("dash-color-picker").value = localStorage["Simplify-Background"].split('background: ')[1].replace(' !important;', '')
                 }
-                hideDistrict = localStorage["Simplify-Hide-District"]
-                autoLogin = localStorage["Simplify-Auto-Login"]
+
                 color1 = localStorage["Simplify-Sidebar"].substring(49, 56)
                 color2 = localStorage["Simplify-Sidebar"].substring(58, 65)
                 document.getElementById("sidebar1").children[0].value = color1
@@ -282,7 +284,7 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
     }
 
     //login sequence:
-    if (JSON.parse(localStorage["Simplify-Auto-Login"])) {
+    if (localStorage["Simplify-Auto-Login"] != "false") {
         console.log("Auto Logging in...")
     }
     //end login
@@ -324,7 +326,6 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
                             e && (document.getElementById('url-parent').className = 'lower-part bg-image url good-url', console.log('good-url')), e || (document.getElementById('url-parent').className = 'lower-part bg-image url')
                             if (e) {
                                 document.getElementById("bg-img-preview").src = imageUrl
-                                document.getElementById("AeriesFullPageContent").style = `background: url(${imageUrl}) !important; background-size: cover !important; background-position-x: center !important;`
                                 localStorage["Simplify-Background"] = `background: url(${imageUrl}) !important; background-size: cover !important; background-position-x: center !important;`
                             }
                         }));
@@ -332,8 +333,12 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
                 } else {
                     document.getElementById("dash-color-picker").value = localStorage["Simplify-Background"].split('background: ')[1].replace(' !important;', '')
                 }
-
-                document.getElementById("auto-login").checked = JSON.parse(localStorage["Simplify-Auto-Login"])
+                if (localStorage["Simplify-Auto-Login"] != "false") {
+                    document.getElementById("auto-login").checked = true
+                    document.getElementById("email-login").value = localStorage["Simplify-Auto-Login"]
+                    document.getElementsByClassName("login-email")[0].className += " good-email"
+                    document.querySelector("#simplify-parent > div:nth-child(2) > div.lower-part.auto-login.login-check").className += " enabled"
+                }
                 color1 = localStorage["Simplify-Sidebar"].substring(49, 56)
                 color2 = localStorage["Simplify-Sidebar"].substring(58, 65)
                 document.getElementById("sidebar1").children[0].value = color1
@@ -352,7 +357,13 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
                 })
                 document.getElementById("auto-login").addEventListener("input", function () {
                     element = document.getElementById("auto-login")
-                    localStorage["Simplify-Auto-Login"] = element.checked
+                    if (element.checked) {
+                        element.parentElement.parentElement.className += " enabled"
+                    } else {
+                        parent = document.getElementsByClassName("lower-part auto-login login-check")[0]
+                        parent.className = parent.className.replace(" enabled", "")
+                    }
+
                 })
                 document.querySelector("#simplify-body > div.simplify-title > div > span").addEventListener("click", function () {
                     document.querySelector("#simplify-parent").style.display = "none"
@@ -385,7 +396,6 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
                     checked = element.checked
                     if (!checked) {
                         color = document.getElementById("dash-color-picker").value
-                        document.getElementById("AeriesFullPageContent").style = `background: ${color} !important;`;
                         localStorage["Simplify-Background"] = `background: ${color} !important;`;
                     } else {
                         function imageExists(e, r) { var t = new Image; t.onload = function () { r(!0) }, t.onerror = function () { r(!1) }, t.src = e } var imageUrl = 'https://' + document.getElementById('bg-url').value.split("//")[document.getElementById('bg-url').value.split("//").length - 1];
@@ -400,6 +410,19 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
                         document.getElementById("bg-url").value = document.getElementById('bg-url').value.split("//")[document.getElementById('bg-url').value.split("//").length - 1]
                     }
                 });
+                function validateEmail(email) {
+                    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                    return re.test(String(email).toLowerCase());
+                }
+                document.getElementById("email-login").addEventListener("input", function () {
+                    element = document.getElementById("email-login")
+                    if (validateEmail(element.value)) {
+                        localStorage["Simplify-Auto-Login"] = element.value
+                        document.getElementsByClassName("login-email")[0].className += " good-email"
+                    } else {
+                        document.getElementsByClassName("login-email")[0].className = document.getElementsByClassName("login-email")[0].className.replace(" good-email", "")
+                    }
+                })
                 document.getElementById("sidebar1").addEventListener('input', function () {
                     localStorage["Simplify-Sidebar"] = `background: radial-gradient(58.5rem at 50% 5rem, ${document.getElementById("sidebar1").children[0].value}, ${document.getElementById("sidebar2").children[0].value})!important;`
                     document.getElementsByClassName("sidebar-gradient")[0].style.background = `linear-gradient(90deg, ${document.getElementById("sidebar1").children[0].value}, ${document.getElementById("sidebar2").children[0].value})`

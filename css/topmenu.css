@@ -490,3 +490,30 @@ input[type="color"] {
 #simplifyMenu.dash-edit div#simplify-body {
   margin-left: 125px !important;
 }
+.lower-part.auto-login.login-check.enabled {
+  border-radius: 5px 5px 0px 0px;
+  margin-bottom: 0px !important;
+}
+.auto-login.login-email {
+  display: none;
+  margin-top: 0px !important;
+  border-radius: 0px 0px 5px 5px;
+  border-top: none !important;
+  background: rgb(255, 221, 221);
+}
+.lower-part.auto-login.login-check.enabled ~ .auto-login.login-email {
+  display: block;
+}
+.login-email input {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  border: none !important;
+  background: transparent;
+}
+.login-email.good-email {
+  background: rgb(221, 255, 221) !important;
+}
+input:-internal-autofill-selected {
+  background: transparent !important;
+}
