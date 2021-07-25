@@ -15,7 +15,7 @@
 }
 .Google.btn.btn-login:active,
 .Google.btn.btn-login:hover,
-.Google.btn.btn-login:active {
+.Google.btn.btn-login {
   background-size: contain !important;
 }
 .language-wrapper {
