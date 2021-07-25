@@ -484,11 +484,14 @@ input[type="color"] {
 #simplifyMenu.sidebar-edit div#simplify-body {
   margin-left: -125px !important;
 }
+/*
 #simplifyMenu.dash-edit {
 }
+
 #simplifyMenu.dash-edit div#simplify-body {
   margin-left: 125px !important;
 }
+*/
 .lower-part.auto-login.login-check.enabled {
   border-radius: 5px 5px 0px 0px;
   margin-bottom: 0px !important;

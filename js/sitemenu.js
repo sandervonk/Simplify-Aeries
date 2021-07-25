@@ -33,6 +33,30 @@ function saveSettings() {
         console.log("value saved")
     });
 }
+function loadSettings() {
+    //remember to add floatBtn
+    chrome.storage.sync.get([
+        "automaticallyLogin",
+        "background",
+        "bgColor",
+        "imgLink2",
+        "loginOAuth",
+        "remove",
+        "sColor1",
+        "sColor2",
+        "useImage"
+    ], function (result) {
+        console.log("loaded settings:")
+        console.log(result)
+        /*
+        localStorage["Simplify-Hide-District"]
+        localStorage["Simplify-Auto-Login"]
+        localStorage["Simplify-Login-Color"]
+        localStorage["Simplify-Background"]
+        localStorage["Simplify-Sidebar"]
+        */
+    });
+}
 
 function setupListeners() {
     //set defaults
