@@ -516,8 +516,13 @@ input[type="color"] {
 .login-email.good-email {
   background: rgb(221, 255, 221) !important;
 }
-input:-internal-autofill-selected {
+input:-internal-autofill-selected,
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
   background: transparent !important;
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 /*can toggle this:*/
 #simplify-parent {
