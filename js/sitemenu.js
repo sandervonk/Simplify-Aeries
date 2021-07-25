@@ -67,10 +67,10 @@ function setupListeners() {
     //setup hide district button
     document.getElementById("hide-district").checked = JSON.parse(localStorage["Simplify-Hide-District"])
     document.getElementById("hide-district").addEventListener("input", function () {
+        element = document.getElementById("hide-district")
         localStorage["Simplify-Hide-District"] = element.checked
         //for login page only
         try {
-            element = document.getElementById("hide-district")
             if (element.checked) { districtVis = "hidden" } else { districtVis = "visible" }
             document.getElementById("district").style.visibility = districtVis
         } catch { }
