@@ -242,11 +242,14 @@ function setupListeners() {
             } catch { }
         });
     }
+    //only run on main page
+    if (!window.location.href.includes("/Login")) {
+        document.getElementById("sidebar1").children[0].addEventListener('focus', function () { if (tog1 === true) { document.getElementById("simplifyMenu").className += " sidebar-edit"; startTimer() } else { document.getElementById("simplifyMenu").className = document.getElementById("simplifyMenu").className.replace(" sidebar-edit", "") } });
+        document.getElementById("sidebar1").children[0].addEventListener('blur', function () { tog1 = !tog1; if (tog1 === true) { tog1 = false; document.getElementById("simplifyMenu").className += " sidebar-edit"; startTimer() } else { document.getElementById("simplifyMenu").className = document.getElementById("simplifyMenu").className.replace(" sidebar-edit", "") } });
+        document.getElementById("sidebar2").children[0].addEventListener('focus', function () { if (tog2 === true) { document.getElementById("simplifyMenu").className += " sidebar-edit"; startTimer() } else { document.getElementById("simplifyMenu").className = document.getElementById("simplifyMenu").className.replace(" sidebar-edit", "") } });
+        document.getElementById("sidebar2").children[0].addEventListener('blur', function () { tog2 = !tog2; if (tog2 === true) { tog2 = false; document.getElementById("simplifyMenu").className += " sidebar-edit"; startTimer() } else { document.getElementById("simplifyMenu").className = document.getElementById("simplifyMenu").className.replace(" sidebar-edit", "") } });
 
-    document.getElementById("sidebar1").children[0].addEventListener('focus', function () { if (tog1 === true) { document.getElementById("simplifyMenu").className += " sidebar-edit"; startTimer() } else { document.getElementById("simplifyMenu").className = document.getElementById("simplifyMenu").className.replace(" sidebar-edit", "") } });
-    document.getElementById("sidebar1").children[0].addEventListener('blur', function () { tog1 = !tog1; if (tog1 === true) { tog1 = false; document.getElementById("simplifyMenu").className += " sidebar-edit"; startTimer() } else { document.getElementById("simplifyMenu").className = document.getElementById("simplifyMenu").className.replace(" sidebar-edit", "") } });
-    document.getElementById("sidebar2").children[0].addEventListener('focus', function () { if (tog2 === true) { document.getElementById("simplifyMenu").className += " sidebar-edit"; startTimer() } else { document.getElementById("simplifyMenu").className = document.getElementById("simplifyMenu").className.replace(" sidebar-edit", "") } });
-    document.getElementById("sidebar2").children[0].addEventListener('blur', function () { tog2 = !tog2; if (tog2 === true) { tog2 = false; document.getElementById("simplifyMenu").className += " sidebar-edit"; startTimer() } else { document.getElementById("simplifyMenu").className = document.getElementById("simplifyMenu").className.replace(" sidebar-edit", "") } });
+    }
 
     //handlers for color pickers
     document.getElementById("dash-color-picker").addEventListener('input', function () {
