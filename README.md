@@ -60,47 +60,50 @@ Feature Item                                                                    
 
 # Info
 
-### _Made by me, yay!_
 
 Features in Place:
 
 - updated dashboard
 - updated login
-- updated _Test Scores_ page
-- updated _Student-Profile_ page
+- all student-accessable pages reworked
 - options page
 - options popup
+- integrated settings on dash
+- integrated settings on login
 
-To-do:
+<details>
+<summary>More detailed list of finished features:</summary>
 
 - Subpages
   - Student Info
-    - ~~_Profile_~~
-    - ~~_Demographics_~~
-    - ~~_Contacts_~~
-    - ~~_Fees and Fines_~~
-  - Attendance
+    - Profile
+    - Demographics
+    - Contacts
+    - Fees and Fines
   - Grades
-    - ~~_Graduation Status_~~
-    - ~~_Transcripts_~~
-    - ~~_Gradebook_~~
-    - ...
+    - Graduation Status
+    - Transcripts
+    - Gradebook
   - Classes
-    - ~~_Classes_~~
-    - Course Requests [hidden :(]
+    - Classes
+    - Course Requests
   - Test Scores
-    - ~~_Test Details_~~
-    - ~~_State Test Scores Report_~~
-    - ~~_Test Scores_~~
-- Add personalization
-  - Have already
-    - Login Background Color
-    - Auto-Login
-    - Floating Nav Buttons
-    - Sidebar Gradient Colors
-    - Dashboard Background
-      - Background Color
-      - Background Image
+    - Test Details
+    - State Test Scores Report
+    - Test Scores
+  - Other
+    - Attendance
+    - Contacts
+- Personalization
+   - Login Background Color
+   - Auto-Login
+   - Floating Nav Buttons
+   - Sidebar Gradient Colors
+   - Dashboard Background
+     - Background Color
+     - Background Image
+ </details>
+ 
   ## Need
 - Small Features
   - _Make IP address actually show well when different from last login (atm just hides when current and last are same)_
@@ -110,8 +113,9 @@ To-do:
 - Make Nav buttons not take up entire height when `float on scroll` is off
 
 # Versions
-
-### v0.9.2 `Current`
+### v1.0-alpha.1
+ - See releases page [here](https://github.com/sandervonk/Simplify-Aeries/releases/tag/integrated-settings-merge)
+### v0.9.2 
 
 #### Changes:
 
