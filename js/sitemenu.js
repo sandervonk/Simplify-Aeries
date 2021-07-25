@@ -48,13 +48,20 @@ function loadSettings() {
     ], function (result) {
         console.log("loaded settings:")
         console.log(result)
-        /*
-        localStorage["Simplify-Hide-District"]
-        localStorage["Simplify-Auto-Login"]
-        localStorage["Simplify-Login-Color"]
-        localStorage["Simplify-Background"]
-        localStorage["Simplify-Sidebar"]
-        */
+        if (!result.automaticallyLogin) {
+            localStorage["Simplify-Auto-Login"] = "false"
+        } else {
+            localStorage["Simplify-Auto-Login"] = result.loginOAuth
+        }
+        localStorage["Simplify-Hide-District"] = result.remove
+        localStorage["Simplify-Login-Color"] = `background: ${result.background} !important`
+        if (result.useImage) {
+            localStorage["Simplify-Background"] = `background: url(${result.imgLink2}) !important; background-size: cover !important; background-position-x: center !important;`
+        } else {
+            localStorage["Simplify-Background"] = `background: ${result.bgColor} !important;`
+        }
+        localStorage["Simplify-Sidebar"] = `background: radial-gradient(58.5rem at 50% 5rem, ${result.sColor1}, ${result.sColor2})!important;`
+
     });
 }
 
@@ -320,7 +327,7 @@ var settingsElement = `
         </div>
     </div>
 </div>`
-
+loadSettings()
 if (window.location.href.includes("aeries.net/student") && !window.location.href.includes("Login")) {
     document.head.innerHTML += `<style>@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');</style>`
 
