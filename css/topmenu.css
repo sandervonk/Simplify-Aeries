@@ -369,7 +369,6 @@ div#simplifyMenu {
   opacity: 0 !important;
   background: transparent;
   display: none !important;
-  margin-bottom: 25px !important;
 }
 #simplify-parent::-webkit-scrollbar-thumb {
   border-radius: 4px;
@@ -516,4 +515,13 @@ input[type="color"] {
 }
 input:-internal-autofill-selected {
   background: transparent !important;
+}
+/*can toggle this:*/
+#simplify-parent {
+  max-height: 500px;
+  max-width: 400px !important;
+  overflow-y: auto !important;
+}
+#simplify-body {
+  overflow: hidden !important;
 }

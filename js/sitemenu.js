@@ -1,3 +1,197 @@
+function setupListeners() {
+    //set defaults
+    if (localStorage["Simplify-Sidebar"] === undefined) {
+        localStorage["Simplify-Sidebar"] = `background: radial-gradient(58.5rem at 50% 5rem, #2e8eab, #113e75)!important;`;
+    }
+    if (localStorage["Simplify-Login-Color"] === undefined) {
+        localStorage["Simplify-Login-Color"] = `background: lightblue !important`
+    }
+    if (localStorage["Simplify-Hide-District"] === undefined) {
+        localStorage["Simplify-Hide-District"] = true
+    }
+    if (localStorage["Simplify-Auto-Login"] === undefined) {
+        localStorage["Simplify-Auto-Login"] = false;
+    }
+
+    var timeoutID;
+    function startTimer() { timeoutID = window.setTimeout(closePreview, 3000); }
+    function resetTimer() { window.clearTimeout(timeoutID); }
+    function closePreview() { document.getElementById("simplifyMenu").className = document.getElementById("simplifyMenu").className.replace(" sidebar-edit", ""); tog1 = true; tog2 = true }
+    tog1 = true
+    tog2 = true
+    //load colors into sidebar and its previews
+    color1 = localStorage["Simplify-Sidebar"].substring(49, 56)
+    color2 = localStorage["Simplify-Sidebar"].substring(58, 65)
+    document.getElementById("sidebar1").children[0].value = color1
+    document.getElementById("sidebar2").children[0].value = color2
+    document.getElementsByClassName("sidebar-gradient")[0].style.background = `linear-gradient(90deg, ${color1}, ${color2})`
+    //setup hide district button
+    document.getElementById("hide-district").checked = JSON.parse(localStorage["Simplify-Hide-District"])
+    document.getElementById("hide-district").addEventListener("input", function () {
+        localStorage["Simplify-Hide-District"] = element.checked
+        //for login page only
+        try {
+            element = document.getElementById("hide-district")
+            if (element.checked) { districtVis = "hidden" } else { districtVis = "visible" }
+            document.getElementById("district").style.visibility = districtVis
+        } catch { }
+
+    })
+    //setup auto login requisites, do correct highlighting and load checks
+    if (localStorage["Simplify-Auto-Login"] != "false") {
+        document.getElementById("auto-login").checked = true
+        document.getElementById("email-login").value = localStorage["Simplify-Auto-Login"]
+        document.getElementsByClassName("login-email")[0].className += " good-email"
+        document.querySelector("#simplify-parent > div:nth-child(2) > div.lower-part.auto-login.login-check").className += " enabled"
+    }
+    //setup autologin coloring and settings
+    document.getElementById("auto-login").addEventListener("input", function () {
+        element = document.getElementById("auto-login")
+        if (element.checked) {
+            element.parentElement.parentElement.className += " enabled"
+        } else {
+            parent = document.getElementsByClassName("lower-part auto-login login-check")[0]
+            parent.className = parent.className.replace(" enabled", "")
+        }
+
+    })
+    //add listeners for collapse icon/close functions
+    document.querySelector("#simplify-body > div.simplify-title > div > span").addEventListener("click", function () {
+        document.querySelector("#simplify-parent").style.display = "none"
+        document.querySelector("#simplify-body").style = "min-height: 0px !important"
+        icon = document.querySelector("#simplify-body > div.simplify-title > div > span")
+        icon.className = document.querySelector("#simplify-body > div.simplify-title > div > span").className.replace('icon-expanded', 'icon-close')
+        icon.title = "Click to close"
+        icon.addEventListener("click", function () {
+            document.getElementById("simplifyMenu").remove()
+            //for login only
+            try {
+                document.querySelector("#simplify-settings").remove()
+            } catch { }
+            window.location.reload()
+        })
+    })
+
+    //load previous settings to UI
+    if (localStorage["Simplify-Background"].includes("url(")) {
+        document.querySelector("#bg-box").click()
+        document.getElementById("bg-url").value = localStorage["Simplify-Background"].split('url(https://')[1].split(')')[0]
+        try {
+            function imageExists(e, r) { var t = new Image; t.onload = function () { r(!0) }, t.onerror = function () { r(!1) }, t.src = e } var imageUrl = 'https://' + document.getElementById('bg-url').value.split("//")[document.getElementById('bg-url').value.split("//").length - 1];
+            imageExists(imageUrl, (function (e) {
+                e && (document.getElementById('url-parent').className = 'lower-part bg-image url good-url', console.log('good-url')), e || (document.getElementById('url-parent').className = 'lower-part bg-image url')
+                if (e) {
+                    document.getElementById("bg-img-preview").src = imageUrl
+                    document.getElementById("AeriesFullPageContent").style = `background: url(${imageUrl}) !important; background-size: cover !important; background-position-x: center !important;`
+                    localStorage["Simplify-Background"] = `background: url(${imageUrl}) !important; background-size: cover !important; background-position-x: center !important;`
+                }
+            }));
+        } catch { }
+    } else {
+        document.getElementById("dash-color-picker").value = localStorage["Simplify-Background"].split('background: ')[1].replace(' !important;', '')
+    }
+
+    //add listeners and checks for bg url setting
+    document.getElementById("bg-url").addEventListener('input', function () {
+        try {
+            function imageExists(e, r) { var t = new Image; t.onload = function () { r(!0) }, t.onerror = function () { r(!1) }, t.src = e } var imageUrl = 'https://' + document.getElementById('bg-url').value.split("//")[document.getElementById('bg-url').value.split("//").length - 1];
+            imageExists(imageUrl, (function (e) {
+                e && (document.getElementById('url-parent').className = 'lower-part bg-image url good-url', console.log('good-url')), e || (document.getElementById('url-parent').className = 'lower-part bg-image url')
+                if (e) {
+                    document.getElementById("bg-img-preview").src = imageUrl
+                    //for main page only
+                    try { document.getElementById("AeriesFullPageContent").style = `background: url(${imageUrl}) !important; background-size: cover !important; background-position-x: center !important;` } catch { }
+                    localStorage["Simplify-Background"] = `background: url(${imageUrl}) !important; background-size: cover !important; background-position-x: center !important;`
+                }
+            }));
+        } catch { }
+        document.getElementById("bg-url").value = document.getElementById('bg-url').value.split("//")[document.getElementById('bg-url').value.split("//").length - 1]
+    });
+
+    //add listeners and function for bg img/color switch
+    document.getElementById("bg-box").addEventListener('change', function () {
+        element = document.getElementById("bg-box")
+        checked = element.checked
+        if (!checked) {
+            color = document.getElementById("dash-color-picker").value
+            //for dash only
+            try {
+                document.getElementById("AeriesFullPageContent").style = `background: ${color} !important;`;
+            } catch { }
+            localStorage["Simplify-Background"] = `background: ${color} !important;`;
+        } else {
+            function imageExists(e, r) { var t = new Image; t.onload = function () { r(!0) }, t.onerror = function () { r(!1) }, t.src = e } var imageUrl = 'https://' + document.getElementById('bg-url').value.split("//")[document.getElementById('bg-url').value.split("//").length - 1];
+            imageExists(imageUrl, (function (e) {
+                e && (document.getElementById('url-parent').className = 'lower-part bg-image url good-url', console.log('good-url')), e || (document.getElementById('url-parent').className = 'lower-part bg-image url')
+                if (e) {
+                    document.getElementById("bg-img-preview").src = imageUrl
+                    localStorage["Simplify-Background"] = `background: url(${imageUrl}) !important; background-size: cover !important; background-position-x: center !important;`
+                    //for main page only
+                    try {
+                        document.getElementById("AeriesFullPageContent").style = `background: url(${imageUrl}) !important; background-size: cover !important; background-position-x: center !important;`
+                    } catch { }
+                }
+            }));
+            document.getElementById("bg-url").value = document.getElementById('bg-url').value.split("//")[document.getElementById('bg-url').value.split("//").length - 1]
+        }
+    });
+
+    //auto-login email handling
+    function validateEmail(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }//setup listeners for email input field
+    document.getElementById("email-login").addEventListener("input", function () {
+        element = document.getElementById("email-login")
+        if (validateEmail(element.value)) {
+            localStorage["Simplify-Auto-Login"] = element.value
+            document.getElementsByClassName("login-email")[0].className += " good-email"
+        } else {
+            document.getElementsByClassName("login-email")[0].className = document.getElementsByClassName("login-email")[0].className.replace(" good-email", "")
+        }
+    })
+
+    //add listeners for sidebars
+    for (sidebarType of ["sidebar1", "sidebar2"]) {
+        document.getElementById(sidebarType).addEventListener('input', function () {
+            color1 = document.getElementById("sidebar1").children[0].value
+            color2 = document.getElementById("sidebar2").children[0].value
+            document.getElementsByClassName("sidebar-gradient")[0].style.background = `linear-gradient(90deg, ${color1}, ${color2})`
+            localStorage["Simplify-Sidebar"] = `background: radial-gradient(58.5rem at 50% 5rem, ${color1}, ${color2})!important;`
+            //only main page:
+            try {
+                document.getElementById("AeriesFullPageNav").style = `background: radial-gradient(58.5rem at 50% 5rem, ${color1}, ${color2})!important;`
+                document.querySelector("#AeriesTextLogo").style = `background: ${color2} !important;`
+                resetTimer()
+            } catch { }
+        });
+    }
+
+    document.getElementById("sidebar1").children[0].addEventListener('focus', function () { if (tog1 === true) { document.getElementById("simplifyMenu").className += " sidebar-edit"; startTimer() } else { document.getElementById("simplifyMenu").className = document.getElementById("simplifyMenu").className.replace(" sidebar-edit", "") } });
+    document.getElementById("sidebar1").children[0].addEventListener('blur', function () { tog1 = !tog1; if (tog1 === true) { tog1 = false; document.getElementById("simplifyMenu").className += " sidebar-edit"; startTimer() } else { document.getElementById("simplifyMenu").className = document.getElementById("simplifyMenu").className.replace(" sidebar-edit", "") } });
+    document.getElementById("sidebar2").children[0].addEventListener('focus', function () { if (tog2 === true) { document.getElementById("simplifyMenu").className += " sidebar-edit"; startTimer() } else { document.getElementById("simplifyMenu").className = document.getElementById("simplifyMenu").className.replace(" sidebar-edit", "") } });
+    document.getElementById("sidebar2").children[0].addEventListener('blur', function () { tog2 = !tog2; if (tog2 === true) { tog2 = false; document.getElementById("simplifyMenu").className += " sidebar-edit"; startTimer() } else { document.getElementById("simplifyMenu").className = document.getElementById("simplifyMenu").className.replace(" sidebar-edit", "") } });
+
+    //handlers for color pickers
+    document.getElementById("dash-color-picker").addEventListener('input', function () {
+        color = document.getElementById("dash-color-picker").value
+        //main page only
+        if (!window.location.href.includes("/Login")) {
+            document.getElementById("AeriesFullPageContent").style = `background: ${color} !important;`
+        }
+
+        localStorage["Simplify-Background"] = `background: ${color} !important;`
+    });
+    document.getElementById("login-color-picker").addEventListener('input', function () {
+        color = document.getElementById("login-color-picker").value
+        //for login only
+        if (window.location.href.includes("/Login")) {
+            document.body.style = `background: ${color}!important`
+        }
+        localStorage["Simplify-Login-Color"] = `background: ${color}!important`
+        //add to storage
+    });
+}
 var settingsElement = `
 <div id="simplifyMenu" style='display: unset;'>
     <div id='simplify-body'>
@@ -58,13 +252,6 @@ var settingsElement = `
     </div>
 </div>`
 
-
-
-
-
-
-
-
 if (window.location.href.includes("aeries.net/student") && !window.location.href.includes("Login")) {
     document.head.innerHTML += `<style>@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');</style>`
 
@@ -73,6 +260,7 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
 
     //load from cache
     setTimeout(function () {
+        setTimeout(setupListeners, 300)
         document.getElementById('aSimplifyAeries').addEventListener("click", function () {
             document.querySelector("#nav-account-dropdown").className = document.querySelector("#nav-account-dropdown").className.replace(" show", "")
             document.body.innerHTML += settingsElement
@@ -80,174 +268,7 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
             setTimeout(function () {
                 document.getElementById("simplifyMenu").className = "blurred"
             }, 100)
-            setTimeout(function () {
 
-                //setup minimize icon
-                document.getElementsByClassName("widget-collapse")[document.getElementsByClassName("widget-collapse").length - 1].addEventListener("click", function () {
-                    iconElement = document.getElementsByClassName("widget-collapse")[document.getElementsByClassName("widget-collapse").length - 1]
-                    if (document.getElementById('simplify-body').className.includes('collapsed')) {
-                        document.getElementById('simplify-body').className = 'expanded'
-                        iconElement.className = iconElement.className.replace("collapsed", "expanded")
-                    } else {
-                        document.getElementById('simplify-body').className = 'collapsed'
-                        iconElement.className = iconElement.className.replace("expanded", "close")
-                        iconElement.title = "Click to close"
-                        iconElement.addEventListener("click", function () {
-                            document.getElementById("simplifyMenu").remove()
-                            window.location.reload()
-                        })
-                    }
-                });
-
-
-                //load previous settings to UI
-                if (localStorage["Simplify-Background"].includes("url(")) {
-                    document.querySelector("#bg-box").click()
-                    document.getElementById("bg-url").value = localStorage["Simplify-Background"].split('url(https://')[1].split(')')[0]
-                    try {
-                        function imageExists(e, r) { var t = new Image; t.onload = function () { r(!0) }, t.onerror = function () { r(!1) }, t.src = e } var imageUrl = 'https://' + document.getElementById('bg-url').value.split("//")[document.getElementById('bg-url').value.split("//").length - 1];
-                        imageExists(imageUrl, (function (e) {
-                            e && (document.getElementById('url-parent').className = 'lower-part bg-image url good-url', console.log('good-url')), e || (document.getElementById('url-parent').className = 'lower-part bg-image url')
-                            if (e) {
-                                document.getElementById("bg-img-preview").src = imageUrl
-                                document.getElementById("AeriesFullPageContent").style = `background: url(${imageUrl}) !important; background-size: cover !important; background-position-x: center !important;`
-                                localStorage["Simplify-Background"] = `background: url(${imageUrl}) !important; background-size: cover !important; background-position-x: center !important;`
-                            }
-                        }));
-                    } catch { }
-                } else {
-                    document.getElementById("dash-color-picker").value = localStorage["Simplify-Background"].split('background: ')[1].replace(' !important;', '')
-                }
-
-                color1 = localStorage["Simplify-Sidebar"].substring(49, 56)
-                color2 = localStorage["Simplify-Sidebar"].substring(58, 65)
-                document.getElementById("sidebar1").children[0].value = color1
-                document.getElementById("sidebar2").children[0].value = color2
-                document.getElementsByClassName("sidebar-gradient")[0].style.background = `linear-gradient(90deg, ${color1}, ${color2})`
-
-                document.getElementById("bg-url").addEventListener('input', function () {
-                    try {
-                        function imageExists(e, r) { var t = new Image; t.onload = function () { r(!0) }, t.onerror = function () { r(!1) }, t.src = e } var imageUrl = 'https://' + document.getElementById('bg-url').value.split("//")[document.getElementById('bg-url').value.split("//").length - 1];
-                        imageExists(imageUrl, (function (e) {
-                            e && (document.getElementById('url-parent').className = 'lower-part bg-image url good-url', console.log('good-url')), e || (document.getElementById('url-parent').className = 'lower-part bg-image url')
-                            if (e) {
-                                document.getElementById("bg-img-preview").src = imageUrl
-                                document.getElementById("AeriesFullPageContent").style = `background: url(${imageUrl}) !important; background-size: cover !important; background-position-x: center !important;`
-                                localStorage["Simplify-Background"] = `background: url(${imageUrl}) !important; background-size: cover !important; background-position-x: center !important;`
-                            }
-                        }));
-                    } catch { }
-                    document.getElementById("bg-url").value = document.getElementById('bg-url').value.split("//")[document.getElementById('bg-url').value.split("//").length - 1]
-                });
-                document.getElementById("bg-box").addEventListener('change', function () {
-                    element = document.getElementById("bg-box")
-                    checked = element.checked
-                    if (!checked) {
-                        color = document.getElementById("dash-color-picker").value
-                        document.getElementById("AeriesFullPageContent").style = `background: ${color} !important;`;
-                        localStorage["Simplify-Background"] = `background: ${color} !important;`;
-                    } else {
-                        function imageExists(e, r) { var t = new Image; t.onload = function () { r(!0) }, t.onerror = function () { r(!1) }, t.src = e } var imageUrl = 'https://' + document.getElementById('bg-url').value.split("//")[document.getElementById('bg-url').value.split("//").length - 1];
-                        imageExists(imageUrl, (function (e) {
-                            e && (document.getElementById('url-parent').className = 'lower-part bg-image url good-url', console.log('good-url')), e || (document.getElementById('url-parent').className = 'lower-part bg-image url')
-                            if (e) {
-                                document.getElementById("bg-img-preview").src = imageUrl
-                                localStorage["Simplify-Background"] = `background: url(${imageUrl}) !important; background-size: cover !important; background-position-x: center !important;`
-                                document.getElementById("AeriesFullPageContent").style = `background: url(${imageUrl}) !important; background-size: cover !important; background-position-x: center !important;`
-                            }
-                        }));
-                        document.getElementById("bg-url").value = document.getElementById('bg-url').value.split("//")[document.getElementById('bg-url').value.split("//").length - 1]
-                    }
-                });
-                document.getElementById("sidebar1").addEventListener('input', function () {
-                    color1 = document.getElementById("sidebar1").children[0].value
-                    color2 = document.getElementById("sidebar2").children[0].value
-                    document.getElementsByClassName("sidebar-gradient")[0].style.background = `linear-gradient(90deg, ${color1}, ${color2})`
-                    document.getElementById("AeriesFullPageNav").style = `background: radial-gradient(58.5rem at 50% 5rem, ${color1}, ${color2})!important;`
-                    document.querySelector("#AeriesTextLogo").style = `background: ${color2} !important;`
-                    localStorage["Simplify-Sidebar"] = `background: radial-gradient(58.5rem at 50% 5rem, ${color1}, ${color2})!important;`
-                    //add to storage
-                    resetTimer()
-                });
-                document.getElementById("sidebar2").addEventListener('input', function () {
-                    color1 = document.getElementById("sidebar1").children[0].value
-                    color2 = document.getElementById("sidebar2").children[0].value
-                    document.getElementsByClassName("sidebar-gradient")[0].style.background = `linear-gradient(90deg, ${color1}, ${color2})`
-                    document.getElementById("AeriesFullPageNav").style = `background: radial-gradient(58.5rem at 50% 5rem, ${color1}, ${color2})!important;`
-                    document.querySelector("#AeriesTextLogo").style = `background: ${color2} !important;`
-                    localStorage["Simplify-Sidebar"] = `background: radial-gradient(58.5rem at 50% 5rem, ${color1}, ${color2})!important;`
-                    //add to storage
-                    resetTimer()
-                });
-                var timeoutID;
-                function startTimer() {
-                    timeoutID = window.setTimeout(closePreview, 3000);
-                }
-
-                function resetTimer(e) {
-                    window.clearTimeout(timeoutID);
-                }
-
-                function closePreview() {
-                    document.getElementById("simplifyMenu").className = document.getElementById("simplifyMenu").className.replace(" sidebar-edit", "")
-                    tog1 = true
-                    tog2 = true
-                }
-
-
-                tog1 = true
-                tog2 = true
-
-                document.getElementById("sidebar1").children[0].addEventListener('focus', function () {
-                    if (tog1 === true) {
-                        document.getElementById("simplifyMenu").className += " sidebar-edit"
-                        startTimer()
-                    } else {
-                        document.getElementById("simplifyMenu").className = document.getElementById("simplifyMenu").className.replace(" sidebar-edit", "")
-                    }
-                });
-                document.getElementById("sidebar1").children[0].addEventListener('blur', function () {
-                    tog1 = !tog1;
-                    if (tog1 === true) {
-                        tog1 = false;
-                        document.getElementById("simplifyMenu").className += " sidebar-edit"
-                        startTimer()
-                    } else {
-                        document.getElementById("simplifyMenu").className = document.getElementById("simplifyMenu").className.replace(" sidebar-edit", "")
-                    }
-                });
-                document.getElementById("sidebar2").children[0].addEventListener('focus', function () {
-                    if (tog2 === true) {
-                        document.getElementById("simplifyMenu").className += " sidebar-edit"
-                        startTimer()
-                    } else {
-                        document.getElementById("simplifyMenu").className = document.getElementById("simplifyMenu").className.replace(" sidebar-edit", "")
-                    }
-                });
-                document.getElementById("sidebar2").children[0].addEventListener('blur', function () {
-                    tog2 = !tog2;
-                    if (tog2 === true) {
-                        tog2 = false;
-                        document.getElementById("simplifyMenu").className += " sidebar-edit"
-                        startTimer()
-                    } else {
-                        document.getElementById("simplifyMenu").className = document.getElementById("simplifyMenu").className.replace(" sidebar-edit", "")
-                    }
-                });
-
-
-                document.getElementById("dash-color-picker").addEventListener('input', function () {
-                    color = document.getElementById("dash-color-picker").value
-                    document.getElementById("AeriesFullPageContent").style = `background: ${color} !important;`
-                    localStorage["Simplify-Background"] = `background: ${color} !important;`
-                });
-                document.getElementById("login-color-picker").addEventListener('input', function () {
-                    color = document.getElementById("login-color-picker").value
-                    localStorage["Simplify-Login-Color"] = `background: ${color}!important`
-                    //add to storage
-                });
-
-            }, 300)
         })
         if (localStorage["Simplify-Background"] === undefined) {
             localStorage["Simplify-Background"] = `background: lightblue !important;`;
@@ -289,9 +310,10 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
     }
     //end login
 
-
-
+    //show/hide district name
     if (JSON.parse(localStorage["Simplify-Hide-District"])) { districtVis = "hidden" } else { districtVis = "visible" }
+
+    //add styles that can only be applied once stuff loads
     setTimeout(function () {
         document.getElementById("district").style.visibility = districtVis
         document.styleSheets[0].insertRule(`
@@ -302,14 +324,17 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
             font-style: normal;
         }`)
     }, 300)
+
+    //set background color for login
     document.body.style = localStorage["Simplify-Login-Color"]
     document.head.innerHTML += `
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap') 
       </style>`
 
-    0
+    //add settings icon to login bar
     setTimeout(function () {
+        setTimeout(setupListeners, 300)
         document.querySelector("#login-block > div.login-box.clearfix > div.language-wrapper > p").innerHTML += `<a id="simplify-settings" title="Open Simplify Aeries Settings" style="padding-left: 10px;font-size:20pt !important;line-height: 10px !important;position: absolute;top: 50%;transform: translateY(-50%);cursor: pointer;text-decoration: none !important;user-select: none;">&#9881;</a>`
         document.querySelector("#simplify-settings").addEventListener("click", function () {
             document.body.innerHTML += settingsElement
@@ -333,114 +358,6 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
                 } else {
                     document.getElementById("dash-color-picker").value = localStorage["Simplify-Background"].split('background: ')[1].replace(' !important;', '')
                 }
-                if (localStorage["Simplify-Auto-Login"] != "false") {
-                    document.getElementById("auto-login").checked = true
-                    document.getElementById("email-login").value = localStorage["Simplify-Auto-Login"]
-                    document.getElementsByClassName("login-email")[0].className += " good-email"
-                    document.querySelector("#simplify-parent > div:nth-child(2) > div.lower-part.auto-login.login-check").className += " enabled"
-                }
-                color1 = localStorage["Simplify-Sidebar"].substring(49, 56)
-                color2 = localStorage["Simplify-Sidebar"].substring(58, 65)
-                document.getElementById("sidebar1").children[0].value = color1
-                document.getElementById("sidebar2").children[0].value = color2
-                document.getElementsByClassName("sidebar-gradient")[0].style.background = `linear-gradient(90deg, ${color1}, ${color2})`
-
-                document.getElementById("hide-district").checked = JSON.parse(localStorage["Simplify-Hide-District"])
-
-
-                document.getElementById("hide-district").addEventListener("input", function () {
-                    element = document.getElementById("hide-district")
-                    localStorage["Simplify-Hide-District"] = element.checked
-                    if (element.checked) { districtVis = "hidden" } else { districtVis = "visible" }
-                    document.getElementById("district").style.visibility = districtVis
-
-                })
-                document.getElementById("auto-login").addEventListener("input", function () {
-                    element = document.getElementById("auto-login")
-                    if (element.checked) {
-                        element.parentElement.parentElement.className += " enabled"
-                    } else {
-                        parent = document.getElementsByClassName("lower-part auto-login login-check")[0]
-                        parent.className = parent.className.replace(" enabled", "")
-                    }
-
-                })
-                document.querySelector("#simplify-body > div.simplify-title > div > span").addEventListener("click", function () {
-                    document.querySelector("#simplify-parent").style.display = "none"
-                    document.querySelector("#simplify-body").style = "min-height: 0px !important"
-                    icon = document.querySelector("#simplify-body > div.simplify-title > div > span")
-                    icon.className = document.querySelector("#simplify-body > div.simplify-title > div > span").className.replace('icon-expanded', 'icon-close')
-                    icon.title = "Click to close"
-                    icon.addEventListener("click", function () {
-                        document.getElementById("simplifyMenu").remove()
-                        document.querySelector("#simplify-settings").remove()
-                        window.location.reload()
-                    })
-                })
-
-                document.getElementById("bg-url").addEventListener('input', function () {
-                    try {
-                        function imageExists(e, r) { var t = new Image; t.onload = function () { r(!0) }, t.onerror = function () { r(!1) }, t.src = e } var imageUrl = 'https://' + document.getElementById('bg-url').value.split("//")[document.getElementById('bg-url').value.split("//").length - 1];
-                        imageExists(imageUrl, (function (e) {
-                            e && (document.getElementById('url-parent').className = 'lower-part bg-image url good-url', console.log('good-url')), e || (document.getElementById('url-parent').className = 'lower-part bg-image url')
-                            if (e) {
-                                document.getElementById("bg-img-preview").src = imageUrl
-                                localStorage["Simplify-Background"] = `background: url(${imageUrl}) !important; background-size: cover !important; background-position-x: center !important;`
-                            }
-                        }));
-                    } catch { }
-                    document.getElementById("bg-url").value = document.getElementById('bg-url').value.split("//")[document.getElementById('bg-url').value.split("//").length - 1]
-                });
-                document.getElementById("bg-box").addEventListener('change', function () {
-                    element = document.getElementById("bg-box")
-                    checked = element.checked
-                    if (!checked) {
-                        color = document.getElementById("dash-color-picker").value
-                        localStorage["Simplify-Background"] = `background: ${color} !important;`;
-                    } else {
-                        function imageExists(e, r) { var t = new Image; t.onload = function () { r(!0) }, t.onerror = function () { r(!1) }, t.src = e } var imageUrl = 'https://' + document.getElementById('bg-url').value.split("//")[document.getElementById('bg-url').value.split("//").length - 1];
-                        imageExists(imageUrl, (function (e) {
-                            e && (document.getElementById('url-parent').className = 'lower-part bg-image url good-url', console.log('good-url')), e || (document.getElementById('url-parent').className = 'lower-part bg-image url')
-                            if (e) {
-                                document.getElementById("bg-img-preview").src = imageUrl
-                                localStorage["Simplify-Background"] = `background: url(${imageUrl}) !important; background-size: cover !important; background-position-x: center !important;`
-                                document.getElementById("AeriesFullPageContent").style = `background: url(${imageUrl}) !important; background-size: cover !important; background-position-x: center !important;`
-                            }
-                        }));
-                        document.getElementById("bg-url").value = document.getElementById('bg-url').value.split("//")[document.getElementById('bg-url').value.split("//").length - 1]
-                    }
-                });
-                function validateEmail(email) {
-                    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                    return re.test(String(email).toLowerCase());
-                }
-                document.getElementById("email-login").addEventListener("input", function () {
-                    element = document.getElementById("email-login")
-                    if (validateEmail(element.value)) {
-                        localStorage["Simplify-Auto-Login"] = element.value
-                        document.getElementsByClassName("login-email")[0].className += " good-email"
-                    } else {
-                        document.getElementsByClassName("login-email")[0].className = document.getElementsByClassName("login-email")[0].className.replace(" good-email", "")
-                    }
-                })
-                document.getElementById("sidebar1").addEventListener('input', function () {
-                    localStorage["Simplify-Sidebar"] = `background: radial-gradient(58.5rem at 50% 5rem, ${document.getElementById("sidebar1").children[0].value}, ${document.getElementById("sidebar2").children[0].value})!important;`
-                    document.getElementsByClassName("sidebar-gradient")[0].style.background = `linear-gradient(90deg, ${document.getElementById("sidebar1").children[0].value}, ${document.getElementById("sidebar2").children[0].value})`
-                });
-
-                document.getElementById("sidebar2").addEventListener('input', function () {
-                    localStorage["Simplify-Sidebar"] = `background: radial-gradient(58.5rem at 50% 5rem, ${document.getElementById("sidebar1").children[0].value}, ${document.getElementById("sidebar2").children[0].value})!important;`
-                    document.getElementsByClassName("sidebar-gradient")[0].style.background = `linear-gradient(90deg, ${document.getElementById("sidebar1").children[0].value}, ${document.getElementById("sidebar2").children[0].value})`
-                });
-                document.getElementById("dash-color-picker").addEventListener('input', function () {
-                    localStorage["Simplify-Background"] = `background: ${document.getElementById("dash-color-picker").value} !important;`
-                });
-                document.getElementById("login-color-picker").addEventListener('input', function () {
-                    color = document.getElementById("login-color-picker").value
-                    document.body.style = `background: ${color}!important`
-                    localStorage["Simplify-Login-Color"] = `background: ${color}!important`
-                    //add to storage
-                });
             }, 200)
 
         })
