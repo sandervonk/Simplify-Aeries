@@ -350,6 +350,10 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
                     document.getElementById("district").style.visibility = districtVis
 
                 })
+                document.getElementById("auto-login").addEventListener("input", function () {
+                    element = document.getElementById("auto-login")
+                    localStorage["Simplify-Auto-Login"] = element.checked
+                })
                 document.querySelector("#simplify-body > div.simplify-title > div > span").addEventListener("click", function () {
                     document.querySelector("#simplify-parent").style.display = "none"
                     document.querySelector("#simplify-body").style = "min-height: 0px !important"
