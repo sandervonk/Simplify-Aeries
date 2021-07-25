@@ -1,3 +1,39 @@
+function saveSettings() {
+    removeDistrict = JSON.parse(localStorage["Simplify-Hide-District"])
+    if (localStorage["Simplify-Auto-Login"] === "false") {
+        autoLogin = false
+        OAuthEmail = ""
+    } else {
+        autoLogin = true
+        OAuthEmail = localStorage["Simplify-Auto-Login"]
+    }
+    if (localStorage["Simplify-Background"].includes("url(")) {
+        dashBackgroundImg = localStorage["Simplify-Background"].split('url(')[1].split(')')[0]
+        dashBackgroundColor = "#ADD8E6";
+        useBgImage = true
+    } else {
+        useBgImage = false
+        dashBackgroundImg = "https://lh3.googleusercontent.com/-24SGkkk23w4/YL6HMZfiIYI/AAAAAAAAygY/43yk0zyDv_MfZXK2ZjxuvBM4Jgieik--wCJEEGAsYHg/s0/2021-06-07.png"
+        dashBackgroundColor = localStorage["Simplify-Background"].substring(12, 19)
+    }
+    loginBackground = localStorage["Simplify-Login-Color"].substring(12, 19)
+    sidebarColor = [localStorage["Simplify-Sidebar"].substring(49, 56), localStorage["Simplify-Sidebar"].substring(58, 65)]
+    //remember to add floatBtn
+    chrome.storage.sync.set({
+        "automaticallyLogin": autoLogin,
+        "background": loginBackground,
+        "bgColor": dashBackgroundColor,
+        "imgLink2": dashBackgroundImg,
+        "loginOAuth": OAuthEmail,
+        "remove": removeDistrict,
+        "sColor1": sidebarColor[0],
+        "sColor2": sidebarColor[1],
+        "useImage": useBgImage,
+    }, function () {
+        console.log("value saved")
+    });
+}
+
 function setupListeners() {
     //set defaults
     if (localStorage["Simplify-Sidebar"] === undefined) {
@@ -12,7 +48,10 @@ function setupListeners() {
     if (localStorage["Simplify-Auto-Login"] === undefined) {
         localStorage["Simplify-Auto-Login"] = false;
     }
-
+    if (localStorage["Simplify-Background"] === undefined) {
+        localStorage["Simplify-Background"] = "background: #ADD8E6 !important"
+    }
+    //set background in ui
     var timeoutID;
     function startTimer() { timeoutID = window.setTimeout(closePreview, 3000); }
     function resetTimer() { window.clearTimeout(timeoutID); }
@@ -52,6 +91,7 @@ function setupListeners() {
         } else {
             parent = document.getElementsByClassName("lower-part auto-login login-check")[0]
             parent.className = parent.className.replace(" enabled", "")
+            localStorage["Simplify-Auto-Login"] = false
         }
 
     })
@@ -68,11 +108,13 @@ function setupListeners() {
             try {
                 document.querySelector("#simplify-settings").remove()
             } catch { }
+            saveSettings()
             window.location.reload()
         })
     })
 
     //load previous settings to UI
+    document.getElementById("login-color-picker").value = localStorage["Simplify-Login-Color"].substring(12, 19)
     if (localStorage["Simplify-Background"].includes("url(")) {
         document.querySelector("#bg-box").click()
         document.getElementById("bg-url").value = localStorage["Simplify-Background"].split('url(https://')[1].split(')')[0]
@@ -82,7 +124,10 @@ function setupListeners() {
                 e && (document.getElementById('url-parent').className = 'lower-part bg-image url good-url', console.log('good-url')), e || (document.getElementById('url-parent').className = 'lower-part bg-image url')
                 if (e) {
                     document.getElementById("bg-img-preview").src = imageUrl
-                    document.getElementById("AeriesFullPageContent").style = `background: url(${imageUrl}) !important; background-size: cover !important; background-position-x: center !important;`
+                    //main page only
+                    try {
+                        document.getElementById("AeriesFullPageContent").style = `background: url(${imageUrl}) !important; background-size: cover !important; background-position-x: center !important;`
+                    } catch { }
                     localStorage["Simplify-Background"] = `background: url(${imageUrl}) !important; background-size: cover !important; background-position-x: center !important;`
                 }
             }));
@@ -260,10 +305,11 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
 
     //load from cache
     setTimeout(function () {
-        setTimeout(setupListeners, 300)
+
         document.getElementById('aSimplifyAeries').addEventListener("click", function () {
             document.querySelector("#nav-account-dropdown").className = document.querySelector("#nav-account-dropdown").className.replace(" show", "")
             document.body.innerHTML += settingsElement
+            setTimeout(setupListeners, 300)
             console.log(`showing menu`)
             setTimeout(function () {
                 document.getElementById("simplifyMenu").className = "blurred"
@@ -334,10 +380,10 @@ if (window.location.href.includes("aeries.net/student") && !window.location.href
 
     //add settings icon to login bar
     setTimeout(function () {
-        setTimeout(setupListeners, 300)
         document.querySelector("#login-block > div.login-box.clearfix > div.language-wrapper > p").innerHTML += `<a id="simplify-settings" title="Open Simplify Aeries Settings" style="padding-left: 10px;font-size:20pt !important;line-height: 10px !important;position: absolute;top: 50%;transform: translateY(-50%);cursor: pointer;text-decoration: none !important;user-select: none;">&#9881;</a>`
         document.querySelector("#simplify-settings").addEventListener("click", function () {
             document.body.innerHTML += settingsElement
+            setTimeout(setupListeners, 300)
             setTimeout(function () {
 
                 //load values
