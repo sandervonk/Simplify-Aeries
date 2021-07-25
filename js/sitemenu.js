@@ -1,3 +1,28 @@
+function colorToRGBA(color) {
+    var cvs, ctx;
+    cvs = document.createElement('canvas');
+    cvs.height = 1;
+    cvs.width = 1;
+    ctx = cvs.getContext('2d');
+    ctx.fillStyle = color;
+    ctx.fillRect(0, 0, 1, 1);
+    return ctx.getImageData(0, 0, 1, 1).data;
+}
+
+function byteToHex(num) {
+    // Turns a number (0-255) into a 2-character hex number (00-ff)
+    return ('0' + num.toString(16)).slice(-2);
+}
+
+function colorToHex(color) {
+    var rgba, hex;
+    rgba = colorToRGBA(color);
+    hex = [0, 1, 2].map(
+        function (idx) { return byteToHex(rgba[idx]); }
+    ).join('');
+    return "#" + hex;
+}
+
 function saveSettings() {
     removeDistrict = JSON.parse(localStorage["Simplify-Hide-District"])
     if (localStorage["Simplify-Auto-Login"] === "false") {
@@ -54,13 +79,13 @@ function loadSettings() {
             localStorage["Simplify-Auto-Login"] = result.loginOAuth
         }
         localStorage["Simplify-Hide-District"] = result.remove
-        localStorage["Simplify-Login-Color"] = `background: ${result.background} !important`
+        localStorage["Simplify-Login-Color"] = `background: ${colorToHex(result.background)} !important`
         if (result.useImage) {
             localStorage["Simplify-Background"] = `background: url(${result.imgLink2}) !important; background-size: cover !important; background-position-x: center !important;`
         } else {
-            localStorage["Simplify-Background"] = `background: ${result.bgColor} !important;`
+            localStorage["Simplify-Background"] = `background: ${colorToHex(result.bgColor)} !important;`
         }
-        localStorage["Simplify-Sidebar"] = `background: radial-gradient(58.5rem at 50% 5rem, ${result.sColor1}, ${result.sColor2})!important;`
+        localStorage["Simplify-Sidebar"] = `background: radial-gradient(58.5rem at 50% 5rem, ${colorToHex(result.sColor1)}, ${colorToHex(result.sColor2)})!important;`
 
     });
 }
