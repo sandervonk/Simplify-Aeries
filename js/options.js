@@ -15,6 +15,32 @@ var jsonOrg = `{
     "F": "#FF430A"
   }
 }`
+
+function colorToRGBA(color) {
+  var cvs, ctx;
+  cvs = document.createElement('canvas');
+  cvs.height = 1;
+  cvs.width = 1;
+  ctx = cvs.getContext('2d');
+  ctx.fillStyle = color;
+  ctx.fillRect(0, 0, 1, 1);
+  return ctx.getImageData(0, 0, 1, 1).data;
+}
+
+function byteToHex(num) {
+  // Turns a number (0-255) into a 2-character hex number (00-ff)
+  return ('0' + num.toString(16)).slice(-2);
+}
+
+function colorToHex(color) {
+  var rgba, hex;
+  rgba = colorToRGBA(color);
+  hex = [0, 1, 2].map(
+    function (idx) { return byteToHex(rgba[idx]); }
+  ).join('');
+  return "#" + hex;
+}
+
 var runTimedOverviews = true
 var runCallouts = true
 chrome.storage.sync.get({ "doTutorial": true }, function (result5) {
@@ -254,8 +280,8 @@ function update_colors() {
   var sidebar1 = correctColor(document.getElementById('sidebar1').value);
   var sidebar2 = correctColor(document.getElementById('sidebar2').value);
   document.getElementById('sidebar').style = `background: linear-gradient(0.25turn, ${sidebar1}, ${sidebar2});`
-  document.getElementById('leftSidebar').style = `background: ${sidebar1};`
-  document.getElementById('rightSidebar').style = `background: ${sidebar2};`
+  document.getElementById('leftSidebarPicker').value = colorToHex(sidebar1)
+  document.getElementById('rightSidebarPicker').value = colorToHex(sidebar2)
   document.getElementById('loginColorPreview').style = `background: ${correctColor(document.getElementById('loginColor').value)} !important;`
   document.getElementById('bgPreview').style = `background: ${correctColor(document.getElementById('solidColor').value)} !important;`
   console.log("ran changes")
@@ -288,8 +314,10 @@ function restore_options() {
     document.getElementById('imgPreview').src = items.imgLink2;
     document.getElementById('sidebar1').value = items.sColor1;
     document.getElementById('sidebar2').value = items.sColor2;
-    document.getElementById('leftSidebar').style = `background: ${items.sColor1};`
-    document.getElementById('rightSidebar').style = `background: ${items.sColor2};`
+    document.getElementById('leftSidebarPicker').value = colorToHex(items.sColor1);
+    document.getElementById('rightSidebarPicker').value = colorToHex(items.sColor2);
+    console.log("ITEMSSSS:")
+    console.log(items)
     document.getElementById('district').checked = items.remove;
     document.getElementById('sidebar').style = `background: linear-gradient(0.25turn, ${items.sColor1}, ${items.sColor2});`;
     document.getElementById('navFloat').checked = items.floatBtn;
@@ -319,8 +347,8 @@ function resetSettings() {
   document.getElementById('imgPreview').src = "https://lh3.googleusercontent.com/-24SGkkk23w4/YL6HMZfiIYI/AAAAAAAAygY/43yk0zyDv_MfZXK2ZjxuvBM4Jgieik--wCJEEGAsYHg/s0/2021-06-07.png";
   document.getElementById('sidebar1').value = "#2e8eab";
   document.getElementById('sidebar2').value = "#113e75";
-  document.getElementById('leftSidebar').style = `background: ${"#2e8eab"};`
-  document.getElementById('rightSidebar').style = `background: ${"#113e75"};`
+  document.getElementById('leftSidebarPicker').value = "#2e8eab"
+  document.getElementById('rightSidebarPicker').value = "#113e75"
   document.getElementById('district').checked = true;
   document.getElementById('sidebar').style = `background: linear-gradient(0.25turn, ${"#2e8eab"}, ${"#113e75"});`;
   document.getElementById('navFloat').checked = true;
@@ -460,5 +488,12 @@ function registerActions() {
   document.getElementById('refreshButton').onclick = resetSettings;
   document.getElementById('gradesButton').onclick = classesOverview;
   document.getElementById('scheduleButton').onclick = scheduleOverview;
+  for (sidebarPicker of ["leftSidebarPicker", "rightSidebarPicker"]) {
+    document.getElementById(sidebarPicker).addEventListener("input", function () {
+      document.getElementById("sidebar1").value = document.getElementById("leftSidebarPicker").value
+      document.getElementById("sidebar2").value = document.getElementById("rightSidebarPicker").value
+      update_colors()
+    })
+  }
 }
 registerActions()
