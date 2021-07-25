@@ -282,8 +282,8 @@ function update_colors() {
   document.getElementById('sidebar').style = `background: linear-gradient(0.25turn, ${sidebar1}, ${sidebar2});`
   document.getElementById('leftSidebarPicker').value = colorToHex(sidebar1)
   document.getElementById('rightSidebarPicker').value = colorToHex(sidebar2)
-  document.getElementById('loginColorPreview').style = `background: ${correctColor(document.getElementById('loginColor').value)} !important;`
-  document.getElementById('bgPreview').style = `background: ${correctColor(document.getElementById('solidColor').value)} !important;`
+  document.getElementById('loginColorPicker').value = colorToHex(correctColor(document.getElementById('loginColor').value))
+  document.getElementById('dashColorPicker').value = colorToHex(correctColor(document.getElementById('solidColor').value))
   console.log("ran changes")
   console.log(`background: ${correctColor(document.getElementById('loginColor').value)} !important;`)
 }
@@ -322,8 +322,8 @@ function restore_options() {
     document.getElementById('sidebar').style = `background: linear-gradient(0.25turn, ${items.sColor1}, ${items.sColor2});`;
     document.getElementById('navFloat').checked = items.floatBtn;
     document.getElementById('loginColor').value = items.background;
-    document.getElementById('loginColorPreview').style = `background: ${items.background} !important;`
-    document.getElementById('bgPreview').style = `background: ${items.bgColor} !important;`
+    document.getElementById('loginColorPicker').value = colorToHex(items.background)
+    document.getElementById('dashColorPicker').value = colorToHex(items.bgColor)
     document.getElementById('autoLog').checked = items.automaticallyLogin;
     document.getElementById('loginEmail').value = items.loginOAuth;
     emailInputCheck()
@@ -353,8 +353,8 @@ function resetSettings() {
   document.getElementById('sidebar').style = `background: linear-gradient(0.25turn, ${"#2e8eab"}, ${"#113e75"});`;
   document.getElementById('navFloat').checked = true;
   document.getElementById('loginColor').value = "lightblue";
-  document.getElementById('loginColorPreview').style = `background: ${"lightblue"} !important;`
-  document.getElementById('bgPreview').style = `background: ${"lightblue"} !important;`
+  document.getElementById('loginColorPicker').value = colorToHex("lightblue")
+  document.getElementById('dashColorPicker').value = colorToHex("lightblue")
   document.getElementById('autoLog').checked = false;
   document.getElementById('loginEmail').value = "";
 }
@@ -495,5 +495,13 @@ function registerActions() {
       update_colors()
     })
   }
+  document.getElementById("loginColorPicker").addEventListener("input", function () {
+    document.getElementById("loginColor").value = document.getElementById("loginColorPicker").value
+    update_colors()
+  })
+  document.getElementById("dashColorPicker").addEventListener("input", function () {
+    document.getElementById("solidColor").value = document.getElementById("dashColorPicker").value
+    update_colors()
+  })
 }
 registerActions()
