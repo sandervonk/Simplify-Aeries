@@ -129,6 +129,8 @@ Features in Place:
 
 - Reduced permissions load, now uses `https://*.aeries.net/*` template instead of requiring `*://*`
 
+</details>
+
 ### v0.9.1
 
 <details>
