@@ -8,7 +8,7 @@
 - [ ] [ ] Simplify Aeries should now be installed!! Try visiting an _\*.aeries.net_ site and it should work!
 - [ ] If you have any problems, please contact me, oh and to customize settings and access the 'quick-check' features, click the extention's icon in your extentions tray
 
-# New features and instructions
+# New features and instructions `v1.0-alpha.1`
 
 ## How to access the new features:
 
