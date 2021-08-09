@@ -19,7 +19,9 @@ function scrapePeriods() {
     console.log(scheduleElements)
     return scheduleElements
 }
-
+function shareInterface() {
+    return ""
+}
 
 
 chrome.runtime.onMessage.addListener(
@@ -30,5 +32,11 @@ chrome.runtime.onMessage.addListener(
             console.log("sent response:")
             console.log(elementForAdd)
         }
+        if (request.message && request.message == "share schedule") {
+            sendResponse("new interface");
+            console.log("sent response:")
+            console.log("open page")
+        }
+
     }
 );
