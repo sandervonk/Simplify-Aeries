@@ -1,8 +1,8 @@
-function scrapePeriods() {
-    var classesInfo = []
+function scrapePeriods(sendInfo) {
+    let classesInfo = []
 
     var numOfClasses = parseInt(document.querySelector(`#gridCourses > tbody > tr:last-of-type`).children[1].textContent.replace(/[Pd\s]/g, ''))
-    scheduleElements = `<img id=backButton src=../icon/3DLogo.png style=position:absolute;top:5px;right:5px;height:30px><div class="top-rounded2">Class Schedule</div>`
+    scheduleElements = `<img id=backButton src=../icon/3DLogo.png style=position:absolute;top:5px;right:5px;height:30px><img id=shareButton src=../imgForBack/share.png style=position:absolute;top:5px;left:5px;height:30px><div class="top-rounded2">Class Schedule</div>`
     for (var periodNum = 1; periodNum < numOfClasses; periodNum++) {
         var classInfo = {}
         var classElement = document.querySelector(`#gridCourses > tbody > tr:nth-child(${periodNum + 2})`)
@@ -14,13 +14,17 @@ function scrapePeriods() {
         classesInfo.push(classInfo)
         scheduleElements += `<div class="elementGroup2"><div class="classLeft2 gradeSection2">${classInfo.period}</div><div class="classMiddleLeft gradeSection2">${classInfo.name}</div><div class="classMiddleRight gradeSection2"><a href="${classInfo.teacherEmail}">${classInfo.teacher}</a><a></a></div><div class="classRight2 gradeSection2">${classInfo.room}</div></div>`
     }
-    console.log("classes info:")
-    console.log(classesInfo)
-    console.log(scheduleElements)
-    return scheduleElements
+    if (arguments.length >= 1 && sendInfo === true) {
+        return classesInfo
+    } else {
+        return scheduleElements
+    }
+
 }
 function shareInterface() {
-    return ""
+    let classes = scrapePeriods(true)
+    return classes
+
 }
 
 
@@ -33,9 +37,9 @@ chrome.runtime.onMessage.addListener(
             console.log(elementForAdd)
         }
         if (request.message && request.message == "share schedule") {
-            sendResponse("new interface");
-            console.log("sent response:")
-            console.log("open page")
+            let classes = shareInterface()
+            sendResponse(classes);
+
         }
 
     }

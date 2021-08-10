@@ -15,6 +15,7 @@ var jsonOrg = `{
     "F": "#FF430A"
   }
 }`
+var classinfo_global = {}
 var runTimedOverviews = true
 var runCallouts = true
 chrome.storage.sync.get({ "doTutorial": true }, function (result5) {
@@ -388,6 +389,30 @@ function backToSettings() {
   update_colors()
   setTimeout(resetBlocker, 5000)
 }
+function shareInterface() {
+  chrome.tabs.query({ url: "*://*.aeries.net/student/Classes*" }, function (tabs) {
+    for (tab of tabs) {
+      chrome.tabs.sendMessage(tab.id, { message: "share schedule" }, function (response) {
+        console.log(response)
+        chrome.tabs.create({
+          url: "html/share.html",
+          active: false
+        })
+        classinfo_global = response
+        setTimeout(function () {
+          chrome.tabs.query({ title: "Simplify Aeries Share Schedule" }, function (tabs) {
+            for (tab of tabs) {
+              chrome.tabs.sendMessage(tab.id, { message: classinfo_global }, function (response) {
+                console.log(response)
+              })
+            }
+          })
+        }, 1000)
+
+      })
+    }
+  })
+}
 function scheduleOverview() {
   if (runTimedOverviews) {
 
@@ -402,6 +427,11 @@ function scheduleOverview() {
             if (response.length != 0) {
               scheduleBodyHTML = response
               document.body.innerHTML = scheduleBodyHTML
+              setTimeout(function () {
+                document.getElementById('shareButton').addEventListener("click", function () {
+                  shareInterface();
+                })
+              }, 200)
               document.body.style = "font-weight: bold; margin-top: 55px;"
             }
             if ((response == undefined) || (response.length <= 0)) {
@@ -460,5 +490,6 @@ function registerActions() {
   document.getElementById('refreshButton').onclick = resetSettings;
   document.getElementById('gradesButton').onclick = classesOverview;
   document.getElementById('scheduleButton').onclick = scheduleOverview;
+
 }
 registerActions()

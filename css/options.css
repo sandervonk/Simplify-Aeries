@@ -1,5 +1,6 @@
 /*for tutcallout*/
-#backButton {
+#backButton,
+#shareButton {
   position: absolute;
   top: 5px;
   right: 5px;
@@ -23,7 +24,7 @@
 }
 .pointer,
 #backButton,
-.button {
+#shareButton .button {
   cursor: pointer;
 }
 .tutorialCalloutHighlight {
