@@ -10,6 +10,12 @@ let themes = [
     ["#cccccc73", "white"],
     ["#33333373", "black"]
 ]
+/*
+let timeoutID = window.setTimeout(function () {
+    try { createPage(JSON.parse(localStorage["simplify-message"])) } catch { console.log("reverting to saved JSON failed") }
+    console.log("ran timeout")
+}, 5000)
+*/
 let colorIndex = 0
 let themeIndex = 0
 var r = document.querySelector(':root');
@@ -29,11 +35,13 @@ function setColors([color1, color2], [color3, color4]) {
     document.getElementById("color2").style.background = color2
 }
 function createPage(json) {
-
+    let classesHTML = ""
     console.log(json)
     for (slot of json) {
         console.log(slot)
+        classesHTML += `<div class="class"></div>`
     }
+    document.getElementById("classes").innerHTML = classesHTML
 }
 window.addEventListener("load", function () {
     let randFirst = parseInt(Math.random() * (colors.length - 1))
@@ -61,7 +69,10 @@ window.addEventListener("load", function () {
         function (request, sender, sendResponse) {
             if (request.message) {
                 createPage(request.message);
-                localStorage["simplify-message"] = request.message
+                console.log(request.message)
+                //window.clearTimeout(timeoutID)
+                localStorage["simplify-message"] = JSON.stringify(request.message)
+                console.log(localStorage["simplify-message"])
             }
 
         }

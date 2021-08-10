@@ -7,7 +7,7 @@
   display: flex;
   position: absolute;
   width: 40vh;
-  height: 70vh;
+  height: 67vh;
   bottom: 5vh;
   margin-bottom: 7.1%;
   left: 7.7vh;
@@ -19,10 +19,15 @@
 }
 .title-spacer,
 .class {
+  border-radius: 1000px;
   color: var(--tile-border);
   background: var(--tile-bg);
   border: solid 0.3vh;
   border-color: var(--tile-border);
+}
+.class {
+  height: 5vh;
+  width: 100%;
 }
 body,
 html {

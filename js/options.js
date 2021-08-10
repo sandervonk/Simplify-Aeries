@@ -407,7 +407,7 @@ function shareInterface() {
               })
             }
           })
-        }, 1000)
+        }, 200)
 
       })
     }

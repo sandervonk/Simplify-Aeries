@@ -2,7 +2,7 @@ function scrapePeriods(sendInfo) {
     let classesInfo = []
 
     var numOfClasses = parseInt(document.querySelector(`#gridCourses > tbody > tr:last-of-type`).children[1].textContent.replace(/[Pd\s]/g, ''))
-    scheduleElements = `<img id=backButton src=../icon/3DLogo.png style=position:absolute;top:5px;right:5px;height:30px><img id=shareButton src=../imgForBack/share.png style=position:absolute;top:5px;left:5px;height:30px><div class="top-rounded2">Class Schedule</div>`
+    scheduleElements = `<img id=backButton src=../icon/3DLogo.png style=position:absolute;top:5px;right:5px;height:30px><img id=shareButton src=../imgForBack/share.png style=filter:brightness(1.5);position:absolute;top:5px;left:5px;height:30px><div class="top-rounded2">Class Schedule</div>`
     for (var periodNum = 1; periodNum < numOfClasses; periodNum++) {
         var classInfo = {}
         var classElement = document.querySelector(`#gridCourses > tbody > tr:nth-child(${periodNum + 2})`)
