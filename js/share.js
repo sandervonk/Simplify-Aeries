@@ -13,8 +13,8 @@ let themes = [
     ["#ff442273", "black"],
     ["#cccccc", "white"],
     ["#333333", "black"],
-    ["#2244ff", "black"],
-    ["#ff4422", "black"]
+    ["#2244dd", "black"],
+    ["#dd4422", "black"]
 ]
 
 let timeoutID = window.setTimeout(function () {
@@ -25,7 +25,16 @@ let timeoutID = window.setTimeout(function () {
 let colorIndex = 0
 let themeIndex = 0
 var r = document.querySelector(':root');
+function decrease_brightness(hex, percent) {
+    var r = parseInt(hex.substr(1, 2), 16),
+        g = parseInt(hex.substr(3, 2), 16),
+        b = parseInt(hex.substr(5, 2), 16);
 
+    return '#' +
+        ((0 | (1 << 8) + r * (100 - percent) / 100).toString(16)).substr(1) +
+        ((0 | (1 << 8) + g * (100 - percent) / 100).toString(16)).substr(1) +
+        ((0 | (1 << 8) + b * (100 - percent) / 100).toString(16)).substr(1);
+}
 function setTheme([bg, border]) {
     r.style.setProperty('--tile-bg', bg);
     r.style.setProperty('--tile-border', border);
@@ -35,21 +44,47 @@ function setColors([color1, color2], [color3, color4]) {
     color3 = color1
     color4 = color2
     //}
-    document.getElementById("color1").style.background = color1
+    document.getElementById("color1").style.background = decrease_brightness(color1, 30)
     document.getElementById("bg-color").style.background = `linear-gradient(135deg, ${color1}, ${color2})`
     document.getElementById("bg-gradient").style.background = `linear-gradient(135deg, ${color3}, ${color4})`
-    document.getElementById("color2").style.background = color2
+    document.getElementById("color2").style.background = decrease_brightness(color2, 30)
 }
 function createPage(json) {
     let classesHTML = ""
     console.log(json)
     for (slot of json) {
         console.log(slot)
-        classesHTML += `<div class="class"><div class="class-details" id="period">${slot.period}</div><div class="class-details" id="name">${slot.name}</div><div class="class-details" id="room">${slot.room}</div></div>`
+        classesHTML += `<div class="class"><div class="class-details" id="period">${slot.period}</div><div class="class-details" id="name">${slot.name}</div><div class="class-details" id="teacher"> - ${slot.teacher}</div><div class="class-details" id="room">${slot.room}</div></div>`
     }
     document.getElementById("classes").innerHTML = classesHTML
 }
 window.addEventListener("load", function () {
+
+
+    $("#download").click(function () {
+        function saveAs(uri, filename) {
+            var link = document.createElement('a');
+            if (typeof link.download === 'string') {
+                link.href = uri;
+                link.download = filename;
+
+                //Firefox requires the link to be in the body
+                document.body.appendChild(link);
+
+                //simulate click
+                link.click();
+
+                //remove the link when done
+                document.body.removeChild(link);
+            } else {
+                window.open(uri);
+            }
+        }
+        html2canvas(document.getElementsByClassName("display")[0]).then(function (canvas) {
+            saveAs(canvas.toDataURL(), 'classes.png');
+        });
+    });
+
     let randFirst = parseInt(Math.random() * (colors.length - 1))
     setColors(colors[randFirst], colors[randFirst + 1 % colors.length])
     document.getElementById("bg-gradient").addEventListener("click", function () {

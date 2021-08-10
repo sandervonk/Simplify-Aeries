@@ -31,6 +31,7 @@
   display: flex;
   flex-direction: row;
 }
+
 .class-details:not(:last-of-type) {
   border-right: solid 0.3vh;
   border-color: var(--tile-border);
@@ -48,7 +49,23 @@
   max-width: 5vh;
 }
 .class-details#name {
+  padding-left: 0.7vh;
   flex-grow: 5;
+  border-right: none !important;
+  text-align: right;
+}
+.class-details#teacher {
+  flex-grow: 4;
+  text-align: left;
+  flex-shrink: 0;
+  padding-right: 0.7vh;
+}
+.class-details#name,
+.class-details#teacher {
+  font-size: 2.5vh;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .class-details#room {
   flex-grow: 2;
@@ -64,6 +81,7 @@ html {
 .display {
   width: 100%;
   height: 100%;
+  box-shadow: 0 0 0.5vh #000000aa;
 }
 #bg-color {
   display: block;
@@ -72,12 +90,16 @@ html {
   background: white;
 }
 #bg-gradient,
-#tile-style {
+#tile-style,
+.title-input,
+#download {
   transform: scale(1);
   transition: transform 0.25s ease-in-out;
 }
 #bg-gradient:hover,
-#tile-style:hover {
+#tile-style:hover,
+.title-input:hover,
+#download:hover {
   transform: scale(1.1);
 }
 .title,
@@ -121,9 +143,10 @@ html {
   height: 5%;
   width: 100%;
   background-color: grey;
-  filter: brightness(0.7);
+  /*filter: brightness(0.7);*/
 }
-.title-input {
+.title-input,
+.button-option {
   display: flex;
   height: 100%;
   border: white solid 0.3vh;
@@ -133,10 +156,19 @@ html {
   background-color: lightgrey;
   text-align: center;
   font-size: 150%;
-  aspect-ratio: 5 / 1;
+  aspect-ratio: 4 / 1;
   color: white;
   text-shadow: 0 0 4px #000000aa;
   padding: 0px 1vh;
+}
+
+.button-option {
+  aspect-ratio: 3 / 1;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
 }
 .title-spacer {
   overflow-wrap: break-word;

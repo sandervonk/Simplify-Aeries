@@ -3,17 +3,21 @@
     <style></style>
     <script src="../js/share.js"></script>
     <link rel="stylesheet" href="../css/share.css" />
-
+    <script type="text/javascript" src="../src/html2canvas.js"></script>
+    <script type="text/javascript" src="../src/canvas2image.js"></script>
+    <script type="text/javascript" src="../src/jquery-3.6.0.min.js"></script>
     <title>Simplify Aeries Share Schedule</title>
   </head>
 
   <body>
     <div class="container">
-      <div class="display">
+      <div class="overlay"></div>
+      <div class="display" id="display">
         <div class="options">
           <div class="color-select" id="bg-gradient"></div>
           <div class="color-select" id="tile-style"></div>
           <input type="text" value="My Schedule" class="title-input" />
+          <div class="button-option" id="download">Download</div>
         </div>
         <div id="color1"></div>
         <div id="bg-color"></div>
