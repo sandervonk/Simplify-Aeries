@@ -29,7 +29,11 @@ function setColors([color1, color2], [color3, color4]) {
     document.getElementById("color2").style.background = color2
 }
 function createPage(json) {
+
     console.log(json)
+    for (slot of json) {
+        console.log(slot)
+    }
 }
 window.addEventListener("load", function () {
     let randFirst = parseInt(Math.random() * (colors.length - 1))
@@ -42,6 +46,16 @@ window.addEventListener("load", function () {
     document.getElementById("tile-style").addEventListener("click", function () {
         themeIndex++
         setTheme(themes[themeIndex % themes.length])
+    })
+    document.querySelector(".title-input").addEventListener("input", function () {
+        let text = document.querySelector(".title-input").value
+        let title = document.querySelector(".title-spacer")
+        title.innerText = text
+        if (text.length === 0) {
+            title.style.display = "none"
+        } else {
+            title.style.display = ""
+        }
     })
     chrome.runtime.onMessage.addListener(
         function (request, sender, sendResponse) {

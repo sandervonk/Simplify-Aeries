@@ -3,8 +3,23 @@
   --tile-bg: #cccccc73;
   --tile-border: white;
 }
+#classes {
+  display: flex;
+  position: absolute;
+  width: 40vh;
+  height: 70vh;
+  bottom: 5vh;
+  margin-bottom: 7.1%;
+  left: 7.7vh;
+}
+#classes {
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
 .title-spacer,
-.class-bg {
+.class {
+  color: var(--tile-border);
   background: var(--tile-bg);
   border: solid 0.3vh;
   border-color: var(--tile-border);
@@ -76,6 +91,24 @@ html {
   width: 100%;
   background-color: grey;
   filter: brightness(0.7);
+}
+.title-input {
+  display: flex;
+  height: 100%;
+  border: white solid 0.3vh;
+  box-sizing: border-box;
+  border-radius: 1000px;
+  margin: 0px 0.5vh;
+  background-color: lightgrey;
+  text-align: center;
+  font-size: 150%;
+  aspect-ratio: 5 / 1;
+  color: white;
+  text-shadow: 0 0 4px #000000aa;
+  padding: 0px 1vh;
+}
+.title-spacer {
+  overflow-wrap: break-word;
 }
 .color-select {
   display: flex;
