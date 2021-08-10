@@ -8,14 +8,20 @@ let colors = [
 ]
 let themes = [
     ["#cccccc73", "white"],
-    ["#33333373", "black"]
+    ["#33333373", "black"],
+    ["#2244ff73", "black"],
+    ["#ff442273", "black"],
+    ["#cccccc", "white"],
+    ["#333333", "black"],
+    ["#2244ff", "black"],
+    ["#ff4422", "black"]
 ]
-/*
+
 let timeoutID = window.setTimeout(function () {
     try { createPage(JSON.parse(localStorage["simplify-message"])) } catch { console.log("reverting to saved JSON failed") }
-    console.log("ran timeout")
-}, 5000)
-*/
+    console.log("used saved values")
+}, 1000)
+
 let colorIndex = 0
 let themeIndex = 0
 var r = document.querySelector(':root');
@@ -39,7 +45,7 @@ function createPage(json) {
     console.log(json)
     for (slot of json) {
         console.log(slot)
-        classesHTML += `<div class="class"></div>`
+        classesHTML += `<div class="class"><div class="class-details" id="period">${slot.period}</div><div class="class-details" id="name">${slot.name}</div><div class="class-details" id="room">${slot.room}</div></div>`
     }
     document.getElementById("classes").innerHTML = classesHTML
 }
@@ -58,11 +64,17 @@ window.addEventListener("load", function () {
     document.querySelector(".title-input").addEventListener("input", function () {
         let text = document.querySelector(".title-input").value
         let title = document.querySelector(".title-spacer")
+        let classElement = document.getElementById("classes")
         title.innerText = text
         if (text.length === 0) {
             title.style.display = "none"
+            classElement.style.height = "73vh"
         } else {
             title.style.display = ""
+            classElement.style.height = ""
+        }
+        if (text.length > 20) {
+            classElement.style.height = "64.5vh"
         }
     })
     chrome.runtime.onMessage.addListener(
@@ -70,7 +82,7 @@ window.addEventListener("load", function () {
             if (request.message) {
                 createPage(request.message);
                 console.log(request.message)
-                //window.clearTimeout(timeoutID)
+                window.clearTimeout(timeoutID)
                 localStorage["simplify-message"] = JSON.stringify(request.message)
                 console.log(localStorage["simplify-message"])
             }

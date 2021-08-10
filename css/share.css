@@ -28,6 +28,32 @@
 .class {
   height: 5vh;
   width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.class-details:not(:last-of-type) {
+  border-right: solid 0.3vh;
+  border-color: var(--tile-border);
+}
+.class-details {
+  flex-grow: 1;
+  text-align: center;
+  line-height: 5vh;
+  font-size: 70%;
+  font-size: 3vh;
+  height: 100%;
+}
+.class-details#period {
+  min-width: 5vh;
+  max-width: 5vh;
+}
+.class-details#name {
+  flex-grow: 5;
+}
+.class-details#room {
+  flex-grow: 2;
+  min-width: 8vh;
+  max-width: 8vh;
 }
 body,
 html {
