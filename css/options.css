@@ -218,6 +218,7 @@ a {
 .sidebar-color {
   /*FOR POPUP SIZING*/
   height: 31.5px !important;
+  overflow: hidden;
 }
 #sidebar {
   height: 37px !important;
