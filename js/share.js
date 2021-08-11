@@ -95,7 +95,7 @@ window.addEventListener("load", function () {
         }
         html2canvas(document.getElementsByClassName("display")[0]).then(function (canvas) {
             imgURI = canvas.toDataURL()
-            saveAs(imgURI, 'classes.png');
+            saveAs(imgURI, 'classes.jpg');
             shareImg(imgURI);
         });
     });
