@@ -159,8 +159,6 @@ function runChanges() {
     chrome.storage.sync.get(['useImage', 'imgLink2', 'bgColor', 'sColor1', 'sColor2', 'remove', 'floatBtn', 'background', 'automaticallyLogin', 'loginOAuth', 'enabled', 'jsonOrg'], function (result) {
         //set background for URL
         resultGlobal = result
-        console.log("result:")
-        console.log(result)
         if (!result.enabled) {
             result = {
                 bgColor: "lightblue",
