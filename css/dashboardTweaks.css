@@ -662,3 +662,20 @@ html.Grades #ctl00_MainContent_subGBS_assignmentsView > div {
   width: 100% !important;
 }
 /*fixes for re-expanded classes body*/
+/*fixes for portrait view*/
+@media (max-width: 990px) {
+  #AeriesFullPageNavItems,
+  .AeriesFullPageParentNavMainLink:not(#any) {
+    border: none !important;
+  }
+  #AeriesFullPageNavItems {
+    width: 250px !important;
+    transform: translate(-50%, 0) !important;
+    position: relative !important;
+    top: 0 !important;
+    left: 50% !important;
+  }
+  #AeriesFullPageNav {
+    max-height: 400px !important;
+  }
+}

@@ -1,73 +1,75 @@
 /*LOGIN CHANGES*/
 
 .login-box {
-    border-radius: 25px !important;
-    border-style: solid;
-  }
-  .btn.btn-login.Google {
-    background: white !important;
-    border-radius: 100px !important;
-    background-size: contain !important;
-    height: 43px !important;
-    background: url(https://lh3.googleusercontent.com/-60p40cNCUo8/YMJqHrzjzOI/AAAAAAAAAWE/Zk7Qynr0BB8LONnp2sZnQy99fJVARFapgCJEEGAsYHg/s512/2021-06-10.png) !important;
-    border-color: transparent !important;
-    border-width: medium !important;
-  }
+  border-radius: 25px !important;
+  border-style: solid;
+}
+.btn.btn-login.Google {
+  background: white !important;
+  border-radius: 100px !important;
+  background-size: cover !important;
+  height: 43px !important;
+  background: url(https://lh3.googleusercontent.com/-60p40cNCUo8/YMJqHrzjzOI/AAAAAAAAAWE/Zk7Qynr0BB8LONnp2sZnQy99fJVARFapgCJEEGAsYHg/s512/2021-06-10.png) !important;
+  border-color: transparent !important;
+  border-width: medium !important;
+}
 
-  .language-wrapper {
-    border-width: 0px !important;
-    border-style: solid !important;
-    border-bottom-width: medium !important;
-    margin-bottom: 25px !important;
-    background-color: white !important;
-    border-top-right-radius: 25px !important;
-    border-top-left-radius: 25px !important;
-  }
-  .language-wrapper>#language {
-    padding-right: 20px !important;
-    border-style: solid !important;
-    border-width: 0px !important;
-    border-left-width: medium !important;
-    border-color: black !important;
-    border-radius: 0px !important;
-    border-top-right-radius: 25px !important;
-  }
-  .language-wrapper>#language:hover {
-    background-color: #ecf0f5;
-  }
-  .language-wrapper>.caret {
-    margin-right: 20px !important;
-    border-style: none !important;
-  }
-  #portalAccountUsername, 
-  #portalAccountUsernameLabel {
-    border-style: solid !important;
-    border-color: #4289ad !important;
-    border-width: medium !important;
-    border-radius: 20px !important;
-    padding-left: 25px !important;
-    background-color: white !important;
-    color: #6c6c6c !important;
-  }
-  #portalAccountUsername:hover,
-  #portalAccountUsernameLabel:hover {
-    background-color:#dff3fd !important;
-  }
-  .btn-login {
-    border-radius: 20px !important;
-    border-style: solid !important;
-    border-color: transparent !important;
-    border-width: medium !important;
-  }
-  .btn-login:hover,
-  .btn.btn-login.Google:hover {
-    border-color: black !important;
-    border-width: medium !important;
-  }
-  .login-box:not(.clearfix){display: none !important;}
+.language-wrapper {
+  border-width: 0px !important;
+  border-style: solid !important;
+  border-bottom-width: medium !important;
+  margin-bottom: 25px !important;
+  background-color: white !important;
+  border-top-right-radius: 25px !important;
+  border-top-left-radius: 25px !important;
+}
+.language-wrapper > #language {
+  padding-right: 20px !important;
+  border-style: solid !important;
+  border-width: 0px !important;
+  border-left-width: medium !important;
+  border-color: black !important;
+  border-radius: 0px !important;
+  border-top-right-radius: 25px !important;
+}
+.language-wrapper > #language:hover {
+  background-color: #ecf0f5;
+}
+.language-wrapper > .caret {
+  margin-right: 20px !important;
+  border-style: none !important;
+}
+#portalAccountUsername,
+#portalAccountUsernameLabel {
+  border-style: solid !important;
+  border-color: #4289ad !important;
+  border-width: medium !important;
+  border-radius: 20px !important;
+  padding-left: 25px !important;
+  background-color: white !important;
+  color: #6c6c6c !important;
+}
+#portalAccountUsername:hover,
+#portalAccountUsernameLabel:hover {
+  background-color: #dff3fd !important;
+}
+.btn-login {
+  border-radius: 20px !important;
+  border-style: solid !important;
+  border-color: transparent !important;
+  border-width: medium !important;
+}
+.btn-login:hover,
+.btn.btn-login.Google:hover {
+  border-color: black !important;
+  border-width: medium !important;
+}
+.login-box:not(.clearfix) {
+  display: none !important;
+}
 /*Login Background*/
-  #TheBody.ModernBrowser {
-    width: 100% !important;
-    margin-top: 10% !important;
-    background: transparent !important;
-  }
+#TheBody.ModernBrowser {
+  width: 100% !important;
+  margin-top: 10% !important;
+  background: lightblue !important;
+}
