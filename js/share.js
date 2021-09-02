@@ -34,7 +34,7 @@ let timeoutID = window.setTimeout(function () {
     console.log("reverting to saved JSON failed");
   }
   console.log("used saved values");
-}, 1000);
+}, 2000);
 
 let colorIndex = 0;
 let themeIndex = 0;
@@ -156,6 +156,8 @@ window.addEventListener("load", function () {
       window.clearTimeout(timeoutID);
       localStorage["simplify-message"] = JSON.stringify(request.message);
       console.log(localStorage["simplify-message"]);
+    } else {
+      console.log("got invalid message response");
     }
   });
 });
