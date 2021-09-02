@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "Simplify Aeries",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Simple customizable QOL CSS changes to Aeries.net Student SIS sites",
   "author": "Sander Vonk",
   "options_page": "html/options.html",
