@@ -1,6 +1,11 @@
 First official Github release:
 
-# v0.9.2 `Current`
+# v1.2.5 `Current`
+
+- Fixed teacher name parsing, schedule generator should work again
+- Fixed class parsing for free periods and semester-long classes
+
+# v0.9.2
 
 ### Changes:
 
